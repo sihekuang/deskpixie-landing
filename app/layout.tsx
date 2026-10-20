@@ -14,9 +14,9 @@ const pixel = Geist_Pixel({
 });
 
 export const metadata: Metadata = {
-  title: "DeskPixie: a desktop buddy for your coding agents",
+  title: "DeskPixie: a desktop voice pixie for your coding agents",
   description:
-    "Talk to Pixie out loud. It hands real work to Claude Code, keeps an eye on your sessions, and tells you when they're done. Free for macOS.",
+    "Talk to Pixie out loud. It hands real work to a Claude Code or Codex agent, keeps an eye on your sessions, and tells you when they're done. Free for macOS.",
   openGraph: {
     title: "DeskPixie",
     description: "Say it out loud. Pixie handles the rest.",

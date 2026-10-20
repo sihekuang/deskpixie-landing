@@ -9,7 +9,7 @@ import { DOWNLOAD_URL, REPO_URL, REQUIREMENTS } from "@/lib/site";
 
 const BENEFITS = [
   { icon: "◉", title: "Talk, don't type", body: "Press ⌃⌥Space and just say it." },
-  { icon: "⇢", title: "Hand off real work", body: "Claude Code does it in the background." },
+  { icon: "⇢", title: "Hand off real work", body: "Claude Code or Codex does it for you." },
   { icon: "✦", title: "Hear when it's done", body: "One sentence. No terminal-watching." },
   { icon: "▣", title: "Keys stay on your Mac", body: "Keychain storage. No telemetry." },
 ];
@@ -69,15 +69,16 @@ export default function Home() {
             </div>
 
             <p className="eyebrow anim" style={{ "--d": ".05s" } as React.CSSProperties}>
-              A desktop buddy for your coding agents
+              A desktop voice pixie for your coding agents
             </p>
             <h1 className="headline">
               <span>Say it out loud.</span>
               <span>Pixie handles the rest.</span>
             </h1>
             <p className="subhead anim" style={{ "--d": ".4s" } as React.CSSProperties}>
-              DeskPixie lives on your Mac desktop. Talk to it, and it hands real work to Claude Code,
-              keeps an eye on the sessions you started, and tells you when they’re done.
+              DeskPixie lives on your Mac desktop. Talk to it, and it hands real work to a Claude Code
+              or Codex agent in the background, keeps an eye on the sessions you started, and tells you
+              when they’re done.
             </p>
 
             <div className="hero-actions anim" style={{ "--d": ".55s" } as React.CSSProperties}>
@@ -131,7 +132,7 @@ export default function Home() {
             for them. You stay in the loop without staring at a terminal.
           </p>
           <p className="compat-note">
-            <b>Claude Code</b> · <b>Codex</b> · any terminal: iTerm, Warp, VS Code, WebStorm
+            <b>Claude Code</b> · <b>Codex</b> · any terminal: WebStorm, iTerm, VS Code
           </p>
           <p className="roadmap-note">
             <span className="soon-tag">Coming soon</span> Support for more coding agents, and for
@@ -165,7 +166,7 @@ export default function Home() {
             n={2}
             reverse
             title="Hands off the real work"
-            body="Coding, research and repo chores go to a Claude Code coordinator running in the background. It can start its own workers and splits the job up, while Pixie stays free to chat."
+            body="Coding, research and repo chores go to the coordinator: a Claude Code agent (or OpenAI Codex, if you prefer) working in the background in a Herdr session. It can start its own workers and split the job up, while Pixie stays free to chat. Needs Herdr 0.7.5 or 0.9.x."
           >
             <div className="feat-panel flow">
               <div className="flow-node">
@@ -180,7 +181,7 @@ export default function Home() {
                 <span className="flow-icon">⚙</span>
                 <div>
                   <b>Coordinator</b>
-                  <span>Claude Code · plans and delegates</span>
+                  <span>Claude Code or Codex · plans and delegates</span>
                 </div>
               </div>
               <div className="flow-line" />
@@ -212,7 +213,7 @@ export default function Home() {
             n={4}
             reverse
             title="Reaches the sessions you already run"
-            body="Start Claude Code or Codex with pix in any terminal. The agent looks and works exactly as usual. The difference is that Pixie can now see that session, tell it something, and interrupt it. And it never types over you."
+            body="Start Claude Code or Codex with pix in any terminal: WebStorm, iTerm, VS Code. The agent looks and works exactly as usual. The difference is that Pixie can now see that session, message it, and interrupt it, right next to its own workers. Install pix from Settings ▸ Coordinator ▸ pix command."
           >
             <div className="feat-panel term">
               <div className="term-win">
@@ -318,7 +319,7 @@ export default function Home() {
             <Image src="/icon-1024.png" alt="" width={28} height={28} />
             <div>
               <b>DeskPixie</b>
-              <span>A desktop buddy for every coding agent.</span>
+              <span>A desktop voice pixie for every coding agent.</span>
             </div>
           </div>
           <nav className="sf-links" aria-label="Footer">
