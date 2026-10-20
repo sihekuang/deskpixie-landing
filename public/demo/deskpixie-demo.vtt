@@ -1,0 +1,52 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:04.600
+<v Pixie>Pixie: Hey there. While you were away, the coordinator asked
+
+00:00:04.600 --> 00:00:09.500
+<v Pixie>if they should push the jitter fix to deskpixie.ai, since it isn't pushed yet. What do you think?
+
+00:00:09.500 --> 00:00:11.240
+<v You>You: Let's go ahead and push that then.
+
+00:00:11.240 --> 00:00:15.280
+<v Pixie>Pixie: On it. I'll let you know when it's done.
+
+00:00:15.280 --> 00:00:16.300
+Oh.
+
+00:00:16.300 --> 00:00:22.500
+<v Pixie>Pixie: While you were away, the push for the jitter fix was allowed,
+
+00:00:22.500 --> 00:00:29.140
+<v Pixie>and the landing page session was told to push it.
+
+00:00:29.480 --> 00:00:32.660
+<v Pixie>Pixie: It'll ask you to confirm, and then the site should update. Anything else?
+
+00:00:32.660 --> 00:00:37.500
+<v You>You: Yes. Once it's been pushed and the Vercel site is built,
+
+00:00:37.500 --> 00:00:42.480
+<v You>bring it up to me in my browser.
+
+00:00:42.480 --> 00:00:46.380
+<v Pixie>Pixie: On it. I'll let you know when it's done.
+
+00:00:58.960 --> 00:01:05.500
+<v Pixie>Pixie: It looks like the jitter fix is pushed to GitHub. You might need to do a hard refresh to see the change. Anything else?
+
+00:01:05.500 --> 00:01:09.800
+<v Pixie>Pixie: The jitter fix is live, and the landing page is opening your browser.
+
+00:01:09.800 --> 00:01:14.900
+<v Pixie>You should use the Vercel tab, since deskpixie.ai might still have trouble loading. Anything else?
+
+00:01:14.900 --> 00:01:16.180
+<v You>You: It's actually looking good. Thanks.
+
+00:01:16.180 --> 00:01:20.320
+<v Pixie>Pixie: You're welcome. Glad I could help. Goodbye.
+
+00:01:20.320 --> 00:01:20.820
+<v You>You: Bye.

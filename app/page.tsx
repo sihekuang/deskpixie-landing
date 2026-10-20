@@ -5,6 +5,7 @@ import { DoneDemo } from "@/components/DoneDemo";
 import { PixiePicker } from "@/components/PixiePicker";
 import { MotionToggle } from "@/components/MotionToggle";
 import { Sprite } from "@/components/Sprite";
+import { DemoVideo } from "@/components/DemoVideo";
 import {
   DOWNLOAD_URL,
   LICENSE_URL,
@@ -118,6 +119,9 @@ export default function Home() {
               <p className="trial-note">
                 Free · {REQUIREMENTS} · Bring your own OpenAI or Gemini key
               </p>
+              <a href="#demo" className="demo-link">
+                <span aria-hidden>▶</span> Watch the demo <span className="demo-len">1:23</span>
+              </a>
             </div>
 
             <div className="anim" style={{ "--d": ".7s" } as React.CSSProperties}>
@@ -155,6 +159,15 @@ export default function Home() {
       </section>
 
       <section className="story">
+        <div id="demo" className="demo">
+          <h2>See it in action</h2>
+          <p>
+            You ask Pixie to ship a fix. It passes the word to your Claude Code session, waits for
+            the deploy, and tells you out loud when the site is live.
+          </p>
+          <DemoVideo />
+        </div>
+
         <div id="features" className="feat-intro">
           <h2>Your agents are busy. Pixie keeps watch.</h2>
           <p>
