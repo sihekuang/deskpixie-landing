@@ -26,7 +26,6 @@ const JSON_LD = {
   operatingSystem: "macOS",
   softwareRequirements: REQUIREMENTS,
   downloadUrl: DOWNLOAD_URL,
-  codeRepository: REPO_URL,
   license: LICENSE_URL,
   isAccessibleForFree: true,
   offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
