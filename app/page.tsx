@@ -5,7 +5,32 @@ import { DoneDemo } from "@/components/DoneDemo";
 import { PixiePicker } from "@/components/PixiePicker";
 import { MotionToggle } from "@/components/MotionToggle";
 import { Sprite } from "@/components/Sprite";
-import { DOWNLOAD_URL, REPO_URL, REQUIREMENTS } from "@/lib/site";
+import {
+  DOWNLOAD_URL,
+  LICENSE_URL,
+  REPO_URL,
+  REQUIREMENTS,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_URL,
+} from "@/lib/site";
+
+const JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: SITE_NAME,
+  description: SITE_DESCRIPTION,
+  url: SITE_URL,
+  image: `${SITE_URL}/icon-1024.png`,
+  applicationCategory: "DeveloperApplication",
+  operatingSystem: "macOS",
+  softwareRequirements: REQUIREMENTS,
+  downloadUrl: DOWNLOAD_URL,
+  codeRepository: REPO_URL,
+  license: LICENSE_URL,
+  isAccessibleForFree: true,
+  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+};
 
 const BENEFITS = [
   { icon: "◉", title: "Talk, don't type", body: "Press ⌃⌥Space and just say it." },
@@ -52,6 +77,12 @@ function Feature({
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(JSON_LD).replace(/</g, "\\u003c"),
+        }}
+      />
       <a href="#main" className="skip-link">
         Skip to content
       </a>

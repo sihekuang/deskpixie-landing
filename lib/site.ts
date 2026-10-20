@@ -1,3 +1,13 @@
+export const SITE_URL = "https://deskpixie.ai";
+export const SITE_NAME = "DeskPixie";
+export const SITE_TITLE = "DeskPixie: a voice layer for your coding agents on macOS";
+export const SITE_DESCRIPTION =
+  "DeskPixie is a desktop pixie you talk to out loud. It hands real work to Claude Code or Codex agents, watches your sessions, and tells you when they're done. Free and open source (Apache 2.0) for macOS.";
+export const LICENSE_URL = "https://www.apache.org/licenses/LICENSE-2.0";
+// Google Search Console HTML-tag token (the `content` value). Leave empty to emit nothing;
+// the DNS TXT route in docs/search-console.md needs no token.
+export const GOOGLE_SITE_VERIFICATION = "";
+
 export const REPO_URL = "https://github.com/sihekuang/deskpixie";
 export const DOWNLOAD_URL = `${REPO_URL}/releases/latest`;
 export const REQUIREMENTS = "macOS 14+ · Apple silicon";
