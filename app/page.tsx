@@ -39,13 +39,14 @@ const BENEFITS = [
   { icon: "▣", title: "Keys stay on your Mac", body: "Keychain storage. No telemetry." },
 ];
 
-function Check() {
-  return (
-    <svg className="pv-check" viewBox="0 0 16 16" aria-hidden>
-      <path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" strokeWidth="2" />
-    </svg>
-  );
-}
+// Privacy panel: 32 half-hour cells, lit only for one conversation with Pixie.
+const MIC_CELLS = 32;
+const MIC_ON = [19, 20, 21];
+const HOME_TILES = [
+  ["KEY", "API keys, in Keychain, never logged"],
+  ["SRC", "Agent sessions and source code"],
+  ["CFG", "Claude and Codex settings, untouched"],
+];
 
 function Feature({
   n,
@@ -299,38 +300,36 @@ export default function Home() {
             body="Your API keys live in the macOS Keychain and are never logged. The microphone is only on while a conversation is open. Agent work runs through your own Claude Code and Codex, and pix never edits your config files."
           >
             <div className="feat-panel privacy">
-              <div className="pv-mac">
-                <div className="pv-head">
-                  <svg viewBox="0 0 20 16" aria-hidden>
-                    <rect x="1" y="1" width="18" height="11" rx="2" fill="none" stroke="currentColor" strokeWidth="1.6" />
-                    <path d="M6 15h8" stroke="currentColor" strokeWidth="1.6" />
-                  </svg>
-                  <b>Your Mac</b>
-                  <span className="pv-on">
-                    <i /> On device
-                  </span>
+              <p className="mic-title">Your mic, across a day</p>
+              {/* One cell per half hour; only the stretch where you talk to Pixie is lit. */}
+              <div className="mic-track" aria-label="Microphone off all day except while you talk to Pixie">
+                <div className="mic-pixie" style={{ gridColumn: `${MIC_ON[0] + 1} / span ${MIC_ON.length}` }}>
+                  <span className="mic-bubble">voice → your provider</span>
+                  <Sprite pixie="bit" state="listening" scale={2} />
                 </div>
-                <ul>
-                  <li>
-                    API keys, in Keychain <Check />
-                  </li>
-                  <li>
-                    Agent sessions &amp; source code <Check />
-                  </li>
-                  <li>
-                    Your Claude &amp; Codex settings, untouched <Check />
-                  </li>
-                </ul>
+                {Array.from({ length: MIC_CELLS }, (_, i) => (
+                  <i key={i} className={MIC_ON.includes(i) ? "on" : undefined} />
+                ))}
               </div>
-              <div className="pv-link">
-                <span className="pv-line" />
-                <span className="pv-label">
-                  Only your voice, only while you’re talking, to the provider you pick
+              <div className="mic-legend">
+                <span>
+                  <i /> mic off
                 </span>
-                <span className="pv-line" />
+                <span>
+                  <i className="on" /> talking to Pixie
+                </span>
               </div>
-              <span className="pv-cloud">OpenAI Realtime or Gemini Live</span>
-              <p className="pv-foot">No telemetry. No analytics. Uninstalling leaves nothing behind.</p>
+
+              <p className="mic-title">Never leaves your Mac</p>
+              <ul className="home-tiles">
+                {HOME_TILES.map(([tag, text]) => (
+                  <li key={tag}>
+                    <b>{tag}</b>
+                    {text}
+                  </li>
+                ))}
+              </ul>
+
             </div>
           </Feature>
         </div>

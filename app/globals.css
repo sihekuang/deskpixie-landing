@@ -1082,99 +1082,112 @@ kbd.wide {
   color: #8a8a86;
 }
 
-/* 5: privacy */
+/* 5: privacy, drawn as a pixel "mic timeline" on the night sky. Taller than the other
+   panels, so the card sizes to it instead of the shared aspect ratio. */
+.feat-card:has(.privacy) {
+  aspect-ratio: auto;
+}
 .privacy {
-  padding: 32px;
+  position: relative;
+  inset: auto;
+  align-items: stretch;
+  justify-content: center;
+  gap: 0;
+  padding: 40px 36px 34px;
+  color: #e3e6f3;
+  background:
+    radial-gradient(rgba(255, 255, 255, 0.14) 1px, transparent 1.5px) 0 0 / 22px 22px,
+    linear-gradient(180deg, var(--night-hi), var(--night-lo));
 }
-.pv-mac {
-  width: 100%;
-  max-width: 380px;
-  padding: 16px 16px 6px;
-  border-radius: 18px;
-  background: #fff;
-  box-shadow:
-    0 0 0 1px rgba(0, 0, 0, 0.05),
-    0 14px 34px rgba(26, 24, 20, 0.08);
-}
-.pv-head {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 0 4px 12px;
-  border-bottom: 1px solid #eeede8;
+.mic-title {
+  font-family: var(--font-display);
   font-size: 15px;
+  letter-spacing: 0.02em;
+  color: #9aa1bf;
+  margin-bottom: 12px;
 }
-.pv-head svg {
-  width: 20px;
-  height: 16px;
+.mic-track {
+  display: grid;
+  grid-template-columns: repeat(32, 1fr);
+  grid-template-rows: auto 18px;
+  column-gap: 3px;
+  align-items: end;
 }
-.pv-on {
-  margin-left: auto;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 10px;
-  border-radius: 999px;
-  background: #e3f5ec;
-  color: #17724b;
-  font-size: 12px;
+.mic-track > i {
+  grid-row: 2;
+  height: 18px;
+  background: rgba(255, 255, 255, 0.1);
 }
-.pv-on i {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: currentColor;
+.mic-track > i.on {
+  background: var(--green);
+  box-shadow: 0 0 10px rgba(18, 185, 129, 0.6);
+  animation: mic-glow 1.6s ease-in-out infinite;
 }
-.pv-mac li {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 4px;
-  border-bottom: 1px solid #f3f2ee;
-  font-size: 14px;
-  color: #3a3a37;
+@keyframes mic-glow {
+  50% {
+    opacity: 0.75;
+  }
 }
-.pv-mac li:last-child {
-  border-bottom: 0;
-}
-.pv-check {
-  width: 16px;
-  height: 16px;
-  color: #17724b;
-}
-.pv-link {
+.mic-pixie {
+  grid-row: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
-  margin: 4px 0;
+  gap: 4px;
+  margin-bottom: 6px;
+  min-width: 0;
 }
-.pv-line {
-  width: 1px;
-  height: 18px;
-  background-image: linear-gradient(#b9b8b2 50%, transparent 50%);
-  background-size: 1px 5px;
-}
-.pv-label {
-  max-width: 260px;
-  font-size: 12px;
-  line-height: 17px;
-  color: #8a8a86;
-  text-align: center;
-}
-.pv-cloud {
-  padding: 8px 14px;
-  border-radius: 999px;
+.mic-bubble {
+  padding: 4px 9px;
+  border-radius: 8px;
   background: #fff;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
-  font-size: 13px;
-  color: #555;
+  color: var(--ink);
+  font-size: 11px;
+  white-space: nowrap;
 }
-.pv-foot {
-  margin-top: 18px;
-  font-size: 13px;
-  color: #8a8a86;
+.mic-legend {
+  display: flex;
+  gap: 18px;
+  margin: 10px 0 30px;
+  font-size: 12px;
+  color: #9aa1bf;
+}
+.mic-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.mic-legend i {
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.18);
+}
+.mic-legend i.on {
+  background: var(--green);
+}
+.home-tiles {
+  display: grid;
+  gap: 8px;
+}
+.home-tiles li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 14px;
+}
+.home-tiles b {
+  flex-shrink: 0;
+  width: 44px;
+  padding: 4px 0;
   text-align: center;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 13px;
+  color: var(--night-lo);
+  background: var(--green-hi);
 }
 
 /* ---------- Pixie picker ---------- */
