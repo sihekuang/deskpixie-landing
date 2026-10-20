@@ -27,13 +27,16 @@ export function HeroDemo() {
 
   return (
     <div className="hero-demo" aria-live="polite">
-      <div className={`bubble ${line ? "is-on" : ""} ${beat.pixie ? "bubble-pixie" : "bubble-you"}`}>
-        {line && (
-          <>
-            <span className="bubble-who">{beat.pixie ? "Pixie" : "You"}</span>
-            <span key={line}>{line}</span>
-          </>
-        )}
+      {/* Fixed-height slot: the bubble grows upward, so lines of different length never move Pixie. */}
+      <div className="bubble-slot">
+        <div className={`bubble ${line ? "is-on" : ""} ${beat.pixie ? "bubble-pixie" : "bubble-you"}`}>
+          {line && (
+            <>
+              <span className="bubble-who">{beat.pixie ? "Pixie" : "You"}</span>
+              <span key={line}>{line}</span>
+            </>
+          )}
+        </div>
       </div>
       <Sprite pixie="bit" state={beat.state} talking={Boolean(beat.pixie)} />
       <div className="roster-chip" aria-label="3 coordinator workers, 2 of your sessions">
