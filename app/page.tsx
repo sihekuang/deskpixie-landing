@@ -108,7 +108,7 @@ export default function Home() {
               <span>Pixie handles the rest.</span>
             </h1>
             <p className="subhead anim" style={{ "--d": ".4s" } as React.CSSProperties}>
-              DeskPixie lives on your Mac desktop. Talk to it, and it hands real work to a Claude Code
+              DeskPixie lives inside your desktop. Talk to it, and it hands real work to a Claude Code
               or Codex agent in the background, keeps an eye on the sessions you started, and tells you
               when they’re done.
             </p>
@@ -167,6 +167,31 @@ export default function Home() {
             the deploy, and tells you out loud when the site is live.
           </p>
           <DemoVideo />
+        </div>
+
+        <div className="workflow">
+          <h2>Your workflow, now with a voice.</h2>
+          <p>
+            DeskPixie doesn’t change how you work. Keep your terminal, your editor and the agents you
+            already run. Pixie adds a voice on top and meets you right where you’re working.
+          </p>
+          <ul className="stack" aria-label="Your terminal, your editor and your agents, plus a voice">
+            <li>Your terminal</li>
+            <li className="plus" aria-hidden>
+              +
+            </li>
+            <li>Your editor</li>
+            <li className="plus" aria-hidden>
+              +
+            </li>
+            <li>Your agents</li>
+            <li className="plus" aria-hidden>
+              +
+            </li>
+            <li className="voice">
+              <Sprite pixie="bit" scale={1} /> a voice
+            </li>
+          </ul>
         </div>
 
         <div id="features" className="feat-intro">

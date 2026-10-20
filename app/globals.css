@@ -1749,3 +1749,63 @@ html[data-motion="off"] *::after {
     font-size: 18px;
   }
 }
+
+/* ---------- Workflow statement ---------- */
+
+.workflow {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 110px 0 0;
+  text-align: center;
+}
+.workflow > p {
+  max-width: 580px;
+  margin: 22px auto 0;
+  font-size: 18px;
+  line-height: 28px;
+  color: var(--ink-muted);
+}
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 36px;
+}
+.stack li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 1px solid var(--rule);
+  background: #fff;
+  font-family: var(--font-display);
+  font-size: 15px;
+  color: var(--ink);
+}
+.stack .plus {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #a8a8a3;
+  font-size: 20px;
+}
+.stack .voice {
+  border-color: var(--night);
+  background: var(--night);
+  color: var(--green-hi);
+}
+@media (max-width: 720px) {
+  .workflow {
+    padding-top: 72px;
+  }
+  .workflow > p {
+    font-size: 16px;
+    line-height: 25px;
+  }
+  .stack li {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+}
