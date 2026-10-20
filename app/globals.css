@@ -96,6 +96,8 @@ a:active {
 /* ---------- Sprite ---------- */
 
 .sprite {
+  --w: 128px;
+  position: relative;
   display: inline-block;
   flex-shrink: 0;
   width: var(--w);
@@ -125,6 +127,114 @@ a:active {
     background-position-x: calc(var(--w) * -8);
   }
 }
+/* Mouth layer: one sprite pixel is var(--w) / 32. Column = openness level, 0 at rest. */
+.mouth {
+  --px: calc(var(--w) / 32);
+  position: absolute;
+  left: calc(var(--mx) * var(--px));
+  top: calc(var(--my) * var(--px));
+  width: calc(var(--mw) * var(--px));
+  height: calc(var(--mh) * var(--px));
+  background-repeat: no-repeat;
+  background-size: calc(var(--w) * 8) auto;
+  background-position: 0 calc(var(--mrow) * var(--w) * -1);
+  image-rendering: pixelated;
+}
+.mouth-talk {
+  animation: talk 0.8s infinite;
+}
+@keyframes talk {
+  0% {
+    background-position-x: 0;
+    animation-timing-function: step-end;
+  }
+  12.5% {
+    background-position-x: calc(var(--w) * -2);
+    animation-timing-function: step-end;
+  }
+  25% {
+    background-position-x: calc(var(--w) * -3);
+    animation-timing-function: step-end;
+  }
+  37.5% {
+    background-position-x: calc(var(--w) * -1);
+    animation-timing-function: step-end;
+  }
+  50% {
+    background-position-x: calc(var(--w) * -2);
+    animation-timing-function: step-end;
+  }
+  62.5% {
+    background-position-x: calc(var(--w) * -3);
+    animation-timing-function: step-end;
+  }
+  75% {
+    background-position-x: calc(var(--w) * -2);
+    animation-timing-function: step-end;
+  }
+  87.5% {
+    background-position-x: calc(var(--w) * -1);
+    animation-timing-function: step-end;
+  }
+}
+/* Happy row's faceDy, one value per frame at 8 fps: [0,-1,-2,-2,-2,-1,0,0] or [0,-1,-2,-3,-2,-1,0,0]. */
+.sprite-happy .mouth {
+  animation: face-2 1s step-end 1 forwards;
+}
+.sprite-happy.face-3 .mouth {
+  animation-name: face-3;
+}
+.sprite-happy .mouth-talk {
+  animation:
+    face-2 1s step-end 1 forwards,
+    talk 0.8s infinite;
+}
+.sprite-happy.face-3 .mouth-talk {
+  animation-name: face-3, talk;
+}
+@keyframes face-2 {
+  0% {
+    translate: 0 0;
+  }
+  12.5% {
+    translate: 0 calc(var(--px) * -1);
+  }
+  25% {
+    translate: 0 calc(var(--px) * -2);
+  }
+  62.5% {
+    translate: 0 calc(var(--px) * -1);
+  }
+  75%,
+  100% {
+    translate: 0 0;
+  }
+}
+@keyframes face-3 {
+  0% {
+    translate: 0 0;
+  }
+  12.5% {
+    translate: 0 calc(var(--px) * -1);
+  }
+  25% {
+    translate: 0 calc(var(--px) * -2);
+  }
+  37.5% {
+    translate: 0 calc(var(--px) * -3);
+  }
+  50% {
+    translate: 0 calc(var(--px) * -2);
+  }
+  62.5% {
+    translate: 0 calc(var(--px) * -1);
+  }
+  75%,
+  100% {
+    translate: 0 0;
+  }
+}
+
 @keyframes bob {
   50% {
     translate: 0 calc(var(--w) / -32);
@@ -368,6 +478,24 @@ a:active {
   gap: 10px;
   min-height: 250px;
 }
+/* Whole sprite pixels only (32px × 4, 6, 7) so the art stays crisp as Pixie grows. */
+.hero-demo .sprite {
+  --w: 128px;
+}
+@media (min-width: 1024px) {
+  .hero-demo .sprite {
+    --w: 192px;
+  }
+  .hero-demo .bubble {
+    max-width: 380px;
+    font-size: 15px;
+  }
+}
+@media (min-width: 1600px) {
+  .hero-demo .sprite {
+    --w: 224px;
+  }
+}
 .bubble {
   position: relative;
   max-width: 340px;
@@ -418,14 +546,36 @@ a:active {
 .roster-chip {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 5px 12px;
+  gap: 0.45em;
+  padding: 0.5em 1.1em;
   border-radius: 999px;
   background: rgba(0, 0, 0, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  color: #d4d8ea;
-  font-size: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #e3e6f3;
+  font-size: 15px;
+  font-weight: 500;
   font-variant-numeric: tabular-nums;
+}
+.roster-chip .dot {
+  width: 0.5em;
+  height: 0.5em;
+  margin-right: 0.2em;
+}
+/* Inter has no ⌨, and the fallback glyph renders small; give both symbols a font that has them. */
+.roster-chip .glyph {
+  font-family: "Apple Symbols", "Segoe UI Symbol", system-ui, sans-serif;
+  font-size: 1.25em;
+  line-height: 1;
+}
+@media (min-width: 1024px) {
+  .roster-chip {
+    font-size: 17px;
+  }
+}
+@media (min-width: 1600px) {
+  .roster-chip {
+    font-size: 19px;
+  }
 }
 .dot {
   width: 7px;
@@ -705,7 +855,9 @@ kbd.wide {
   padding: 14px 16px;
   border-radius: 16px;
   background: #fff;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 8px 20px rgba(26, 24, 20, 0.06);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.05),
+    0 8px 20px rgba(26, 24, 20, 0.06);
 }
 .flow-node b,
 .worker b {
@@ -891,7 +1043,9 @@ kbd.wide {
   padding: 10px;
   border-radius: 14px;
   background: #fff;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06), 0 14px 30px rgba(26, 24, 20, 0.12);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.06),
+    0 14px 30px rgba(26, 24, 20, 0.12);
   font-size: 13px;
 }
 .roster-head {
@@ -1214,6 +1368,7 @@ html[data-motion="off"] *::after {
     animation: none;
   }
   .sprite,
+  .mouth,
   .sky,
   .dot,
   .wave i,

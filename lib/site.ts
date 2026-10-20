@@ -13,6 +13,19 @@ export const PIXIES: Record<PixieId, { name: string; blurb: string }> = {
   blackgold: { name: "Black Gold", blurb: "Quiet, polished, never misses a finished turn." },
 };
 
+// The mouth is a separate layer, as in the app: `mouth` in each pixie.json gives its row in the
+// sheet (column = openness level 0–3, 0 at rest), its top-left anchor in the cell and its size.
+// `facePeak` is the lowest value of the happy row's faceDy, which lifts the mouth with the face.
+export const MOUTHS: Record<
+  PixieId,
+  { row: number; anchor: [number, number]; size: [number, number]; facePeak: 2 | 3 }
+> = {
+  bit: { row: 5, anchor: [12, 20], size: [8, 5], facePeak: 2 },
+  blackgold: { row: 6, anchor: [25, 14], size: [4, 5], facePeak: 3 },
+  dino: { row: 6, anchor: [22, 14], size: [7, 4], facePeak: 3 },
+  flash: { row: 6, anchor: [25, 21], size: [5, 3], facePeak: 2 },
+};
+
 export const STATE_ROWS: Record<PixieState, number> = {
   idle: 0,
   listening: 1,

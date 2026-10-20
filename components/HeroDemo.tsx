@@ -35,9 +35,10 @@ export function HeroDemo() {
           </>
         )}
       </div>
-      <Sprite pixie="bit" state={beat.state} scale={4} />
+      <Sprite pixie="bit" state={beat.state} talking={Boolean(beat.pixie)} />
       <div className="roster-chip" aria-label="3 coordinator workers, 2 of your sessions">
-        <span className="dot" />⚙ 3 · ⌨ 2
+        <span className="dot" />
+        <span className="glyph">⚙</span> 3 · <span className="glyph">⌨</span> 2
       </div>
     </div>
   );
