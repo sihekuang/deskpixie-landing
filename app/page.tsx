@@ -33,7 +33,7 @@ const JSON_LD = {
 };
 
 const BENEFITS = [
-  { icon: "◉", title: "Talk, don't type", body: "Press ⌃⌥Space and just say it." },
+  { icon: "◉", title: "Talk or type", body: "Press ⌃⌥Space and say it, or type it." },
   { icon: "⇢", title: "Hand off real work", body: "Claude Code or Codex does it for you." },
   { icon: "✦", title: "Hear when it's done", body: "One sentence. No terminal-watching." },
   { icon: "▣", title: "Keys stay on your Mac", body: "Keychain storage. No telemetry." },
@@ -212,8 +212,8 @@ export default function Home() {
         <div className="feat-list">
           <Feature
             n={1}
-            title="Talk to it like a teammate"
-            body="Press ⌃⌥Space or double-click Pixie and just talk. Answers come back short and spoken, and Pixie’s mouth moves while it talks. Ask the time, set a timer, or ask what your agents are up to."
+            title="Talk to it, or type"
+            body="Press ⌃⌥Space or double-click Pixie and just talk. Answers come back short and spoken, and Pixie’s mouth moves while it talks. Ask the time, set a timer, or ask what your agents are up to. In a meeting or a quiet office? Flip the toggle under Pixie to 💬 and type instead: the answer shows as text, without a sound."
           >
             <div className="feat-panel talk">
               <div className="keys" aria-label="Control, Option, Space">

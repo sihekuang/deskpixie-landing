@@ -557,39 +557,198 @@ a:active {
 .bubble-pixie .bubble-who {
   color: #0f8a62;
 }
-.roster-chip {
-  display: inline-flex;
+/* The widgets under Pixie, drawn like the app's SwiftUI views in dark mode
+   (AgentRosterView, ReplyModeToggle, QuickChatCard): .regularMaterial, a separator stroke,
+   SF Pro, title3 (15pt) for the row, callout (12pt) and caption (10pt) in the card.
+   --u scales the app's points up with the bigger Pixie. */
+.mac-ui {
+  --u: 1.15px;
+  --mat: rgba(44, 44, 48, 0.82);
+  --sep: rgba(255, 255, 255, 0.13);
+  --primary: rgba(255, 255, 255, 0.92);
+  --secondary: rgba(235, 235, 245, 0.6);
+  --tertiary: rgba(235, 235, 245, 0.3);
+  --bg: #1e1e1f;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", var(--font-sans);
+  color: var(--primary);
+  -webkit-font-smoothing: antialiased;
+  /* The row and the card are centred under Pixie, as the app's VStack centres them. */
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.45em;
-  padding: 0.5em 1.1em;
-  border-radius: 999px;
-  background: rgba(0, 0, 0, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  color: #e3e6f3;
-  font-size: 15px;
-  font-weight: 500;
-  font-variant-numeric: tabular-nums;
-}
-.roster-chip .dot {
-  width: 0.5em;
-  height: 0.5em;
-  margin-right: 0.2em;
-}
-/* Inter has no ⌨, and the fallback glyph renders small; give both symbols a font that has them. */
-.roster-chip .glyph {
-  font-family: "Apple Symbols", "Segoe UI Symbol", system-ui, sans-serif;
-  font-size: 1.25em;
-  line-height: 1;
+  gap: calc(4 * var(--u));
+  width: 100%;
 }
 @media (min-width: 1024px) {
-  .roster-chip {
-    font-size: 17px;
+  .mac-ui {
+    --u: 1.3px;
   }
 }
 @media (min-width: 1600px) {
-  .roster-chip {
-    font-size: 19px;
+  .mac-ui {
+    --u: 1.45px;
   }
+}
+.mac-material {
+  background: var(--mat);
+  border: 1px solid var(--sep);
+  backdrop-filter: blur(20px) saturate(1.6);
+  -webkit-backdrop-filter: blur(20px) saturate(1.6);
+}
+.roster-row {
+  display: flex;
+  align-items: center;
+  gap: calc(6 * var(--u));
+}
+.roster-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(10 * var(--u));
+  padding: calc(6 * var(--u)) calc(12 * var(--u));
+  border-radius: 999px;
+  font-size: calc(15 * var(--u));
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+}
+.roster-chip .dot {
+  width: calc(6 * var(--u));
+  height: calc(6 * var(--u));
+  margin-right: calc(-4 * var(--u));
+}
+.roster-chip .count {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(4 * var(--u));
+}
+.roster-chip svg {
+  width: 1.05em;
+  height: 1.05em;
+}
+.mode-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(2 * var(--u));
+  padding: calc(3 * var(--u));
+  border-radius: 999px;
+  font-size: calc(15 * var(--u));
+}
+.mode-toggle span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(34 * var(--u));
+  height: calc(26 * var(--u));
+  border-radius: 999px;
+  color: var(--secondary);
+  transition:
+    background 0.3s var(--ease),
+    color 0.3s var(--ease);
+}
+.mode-toggle span.is-on {
+  background: var(--bg);
+  color: var(--primary);
+}
+/* Tall enough for the full card (answer, status, input); it opens downward from the row. */
+.card-slot {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: calc(118 * var(--u));
+}
+.chat-card {
+  width: calc(260 * var(--u));
+  max-width: 100%;
+  align-self: flex-start;
+  padding: calc(6 * var(--u));
+  border-radius: calc(12 * var(--u));
+  text-align: left;
+  font-size: calc(12 * var(--u));
+  line-height: 1.35;
+  opacity: 0;
+  transform: translateY(-6px) scale(0.97);
+  transition:
+    opacity 0.3s var(--ease),
+    transform 0.3s var(--ease);
+}
+.chat-card.is-on {
+  opacity: 1;
+  transform: none;
+}
+.chat-card > * {
+  padding-left: calc(8 * var(--u));
+  padding-right: calc(8 * var(--u));
+}
+.chat-who,
+.chat-status {
+  display: flex;
+  justify-content: space-between;
+  font-size: calc(10 * var(--u));
+  font-weight: 600;
+  color: var(--secondary);
+}
+.chat-who {
+  padding-top: calc(4 * var(--u));
+  margin-bottom: calc(4 * var(--u));
+}
+.chat-answer {
+  margin: 0;
+}
+.chat-status {
+  margin-top: calc(4 * var(--u));
+}
+.chat-stop {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+}
+.chat-stop i {
+  width: 0.75em;
+  height: 0.75em;
+  border-radius: 1.5px;
+  background: currentColor;
+}
+.chat-input {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: calc(6 * var(--u));
+  margin-top: calc(6 * var(--u));
+  padding-top: calc(6 * var(--u));
+  padding-bottom: calc(6 * var(--u));
+  border-top: 1px solid var(--sep);
+}
+/* Nothing above the input yet (ready, typing): no divider. */
+.chat-input:first-child {
+  margin-top: 0;
+  border-top: 0;
+}
+.chat-placeholder {
+  color: var(--tertiary);
+}
+.chat-input .caret {
+  display: inline-block;
+  width: 1.5px;
+  height: 1.1em;
+  margin-left: 1px;
+  vertical-align: -0.2em;
+  background: #0a84ff;
+  animation: caret 1s steps(1) infinite;
+}
+@keyframes caret {
+  50% {
+    opacity: 0;
+  }
+}
+.chat-send {
+  flex: none;
+  width: calc(17 * var(--u));
+  height: calc(17 * var(--u));
+  color: var(--tertiary);
+  transition: color 0.2s var(--ease);
+}
+.chat-send.is-on {
+  color: var(--primary);
 }
 .dot {
   width: 7px;
