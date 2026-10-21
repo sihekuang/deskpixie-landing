@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist_Pixel, Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import {
   GOOGLE_SITE_VERIFICATION,
@@ -52,7 +53,10 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${inter.variable} ${pixel.variable}`}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
