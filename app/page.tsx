@@ -100,8 +100,8 @@ export default function Home() {
               </span>
             </div>
 
-            <p className="eyebrow anim" style={{ "--d": ".05s" } as React.CSSProperties}>
-              A desktop voice pixie for your coding agents
+            <p className="eyebrow tagline anim" style={{ "--d": ".05s" } as React.CSSProperties}>
+              One pixie to rule them all.
             </p>
             <h1 className="headline">
               <span>Say it out loud.</span>
