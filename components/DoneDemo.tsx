@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { TerminalIcon } from "./HeroDemo";
 
 // Session names come from pix's set_description tool; each shows as the terminal tab title.
 const SESSIONS = [
@@ -41,6 +42,10 @@ export function DoneDemo() {
       <div className="said" key={active}>
         <span className="said-label">Pixie says</span>
         <p>“{SESSIONS[active].said}”</p>
+        {/* As under Pixie's words in the app: a click brings up that session's terminal tab. */}
+        <span className="said-session">
+          <TerminalIcon /> {SESSIONS[active].tab} <span aria-hidden>↗</span>
+        </span>
       </div>
     </div>
   );

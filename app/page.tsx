@@ -6,6 +6,7 @@ import { PixiePicker } from "@/components/PixiePicker";
 import { MotionToggle } from "@/components/MotionToggle";
 import { Sprite } from "@/components/Sprite";
 import { DemoVideo } from "@/components/DemoVideo";
+import { PaperclipIcon, SendIcon } from "@/components/HeroDemo";
 import {
   DOWNLOAD_URL,
   LICENSE_URL,
@@ -42,6 +43,12 @@ const BENEFITS = [
 // Privacy panel: 32 half-hour cells, lit only for one conversation with Pixie.
 const MIC_CELLS = 32;
 const MIC_ON = [19, 20, 21];
+const CANVAS_BARS: [string, number, number][] = [
+  ["/", 92, 48],
+  ["/docs", 70, 41],
+  ["/pricing", 55, 30],
+];
+
 const HOME_TILES = [
   ["KEY", "API keys, in Keychain, never logged"],
   ["SRC", "Agent sessions and source code"],
@@ -213,7 +220,7 @@ export default function Home() {
           <Feature
             n={1}
             title="Talk to it, or type"
-            body="Press ⌃⌥Space or double-click Pixie and just talk. Answers come back short and spoken, and Pixie’s mouth moves while it talks. Ask the time, set a timer, or ask what your agents are up to. In a meeting or a quiet office? Flip the toggle under Pixie to 💬 and type instead: the answer shows as text, without a sound."
+            body="Press ⌃⌥Space or double-click Pixie and just talk. Answers come back short and spoken, and Pixie does quick things itself: the time, the weather, a timer, a sum, some music. Your words and Pixie’s show as captions while you talk, and ‹ › steps back through the last few minutes of replies. In a meeting? Flip the toggle under Pixie to 💬 and type instead: the answer shows as text, without a sound."
           >
             <div className="feat-panel talk">
               <div className="keys" aria-label="Control, Option, Space">
@@ -235,7 +242,7 @@ export default function Home() {
             n={2}
             reverse
             title="Hands off the real work"
-            body="Coding, research and repo chores go to the coordinator: a Claude Code agent (or OpenAI Codex, if you prefer) working in the background in a Herdr session. It can start its own workers and split the job up, while Pixie stays free to chat. Needs Herdr 0.7.5 or 0.9.x."
+            body="Coding, research and repo chores go to the coordinator: a Claude Code agent (or OpenAI Codex, if you prefer) working in the background in a Herdr session. It can start its own workers and split the job up, while Pixie stays free to chat. Results, questions and permission requests come back to you, and a worker that made something stays open until you’re done with it. Needs Herdr 0.7.5 or 0.9.x."
           >
             <div className="feat-panel flow">
               <div className="flow-node">
@@ -272,17 +279,46 @@ export default function Home() {
 
           <Feature
             n={3}
-            title="Tells you when it’s done"
-            body="When a long turn in one of your sessions ends, Pixie says what happened in one sentence. Each session names itself after its project and task, so you can say “tell the login-bug one to stop.”"
+            title="Hand it what you’re looking at"
+            body="Copy a screenshot of an error, a PDF or a log file, and Pixie offers to take it. Paste it into the text box, drop it on Pixie, pick it with 📎, or just say “take what I copied.” The coordinator, and any worker it hands the job to, gets the file with your request."
           >
-            <DoneDemo />
+            <div className="feat-panel attach mac-ui">
+              <span className="offer mac-material">
+                <PhotoIcon /> Want me to take this?
+              </span>
+              <Sprite pixie="bit" state="listening" scale={3} />
+              <div className="chat-card mac-material is-on">
+                <div className="chips">
+                  <span className="chip">
+                    <i className="thumb" /> Screenshot 10.22 at 09.41.png <b aria-hidden>✕</b>
+                  </span>
+                  <span className="chip">
+                    <i className="thumb doc" /> build.log <b aria-hidden>✕</b>
+                  </span>
+                </div>
+                <div className="chat-input">
+                  <PaperclipIcon />
+                  <span className="chat-field">Why is the build failing?</span>
+                  <SendIcon on />
+                </div>
+              </div>
+              <p className="attach-note">Up to five files at a time. Text you copy stays text.</p>
+            </div>
           </Feature>
 
           <Feature
             n={4}
             reverse
+            title="Tells you when it’s done"
+            body="When a long turn in one of your sessions ends, Pixie says what happened in one sentence. Each session names itself after its project and task, so you can say “tell the login-bug one to stop.” A button under Pixie’s words takes you straight to that session’s terminal tab."
+          >
+            <DoneDemo />
+          </Feature>
+
+          <Feature
+            n={5}
             title="Reaches the sessions you already run"
-            body="Start Claude Code or Codex with pix in any terminal: WebStorm, iTerm, VS Code. The agent looks and works exactly as usual. The difference is that Pixie can now see that session, message it, and interrupt it, right next to its own workers. Install pix from Settings ▸ Coordinator ▸ pix command."
+            body="Start Claude Code or Codex with pix in any terminal: WebStorm, iTerm, VS Code. The agent looks and works exactly as usual. The difference is that Pixie can now see that session, message it, interrupt it and pass on its questions, right next to its own workers. Say “show me the api session” and its tab comes to the front. Install pix from Settings ▸ Coordinator ▸ pix command."
           >
             <div className="feat-panel term">
               <div className="term-win">
@@ -319,7 +355,52 @@ export default function Home() {
           </Feature>
 
           <Feature
-            n={5}
+            n={6}
+            reverse
+            title="Shows, not just tells"
+            body="Some answers are better seen. The coordinator can open a canvas page next to Pixie: a chart, an architecture diagram, a side-by-side comparison. Ask it to show you, and the page opens on your desktop."
+          >
+            <div className="feat-panel canvas">
+              <div className="canvas-win">
+                <div className="term-bar">
+                  <i />
+                  <i />
+                  <i />
+                  <span>Bundle size by route</span>
+                </div>
+                <div className="canvas-page">
+                  <b>Bundle size by route</b>
+                  <span className="canvas-sub">Before and after the split, in kB</span>
+                  <div className="bars" role="img" aria-label="Bar chart: every route got smaller after the split">
+                    {CANVAS_BARS.map(([route, before, after]) => (
+                      <div key={route} className="bar-row">
+                        <span>{route}</span>
+                        <div>
+                          <i className="b1" style={{ width: `${before}%` }} />
+                          <i className="b2" style={{ width: `${after}%` }} />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="canvas-legend">
+                    <span>
+                      <i className="b1" /> before
+                    </span>
+                    <span>
+                      <i className="b2" /> after
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div className="canvas-pixie">
+                <Sprite pixie="bit" state="happy" scale={2} />
+                <span>“Here’s the comparison.”</span>
+              </div>
+            </div>
+          </Feature>
+
+          <Feature
+            n={7}
             id="privacy"
             title="Keeps your keys on your Mac"
             body="Your API keys live in the macOS Keychain and are never logged. The microphone is only on while a conversation is open. Agent work runs through your own Claude Code and Codex, and pix never edits your config files."
@@ -359,6 +440,28 @@ export default function Home() {
           </Feature>
         </div>
 
+        <div id="setup" className="setup">
+          <h2>Set up in one window</h2>
+          <p>
+            The first time you open DeskPixie, a welcome window walks you through it. Every choice
+            is the same setting you can change later.
+          </p>
+          <ol className="setup-steps">
+            <li>
+              <b>Pick your Pixie</b>
+              <span>And what it does: talk, run agents, watch your own sessions, show canvas pages.</span>
+            </li>
+            <li>
+              <b>Set up each part</b>
+              <span>Your voice key and microphone, Herdr with Claude Code or Codex, and the pix command.</span>
+            </li>
+            <li>
+              <b>Allow permissions once</b>
+              <span>Every macOS permission up front, so nothing interrupts you later.</span>
+            </li>
+          </ol>
+        </div>
+
         <div id="pixies" className="pixies">
           <h2>Pick your pixie</h2>
           <p>
@@ -371,7 +474,7 @@ export default function Home() {
         <div className="closing">
           <Image src="/icon-1024.png" alt="" width={96} height={96} className="closing-icon" />
           <h2>Less terminal-watching. More getting on with it.</h2>
-          <p>Talk to your coding agents and hear back from them. Free on macOS.</p>
+          <p>Talk or type to your coding agents, and hear back from them. Free on macOS.</p>
           <a href={DOWNLOAD_URL} className="primary-cta dark">
             Download for Mac <span aria-hidden>↗</span>
           </a>
@@ -386,7 +489,7 @@ export default function Home() {
             <Image src="/icon-1024.png" alt="" width={28} height={28} />
             <div>
               <b>DeskPixie</b>
-              <span>A desktop voice pixie for every coding agent.</span>
+              <span>A voice layer on top of your coding agents.</span>
             </div>
           </div>
           <nav className="sf-links" aria-label="Footer">
@@ -400,5 +503,18 @@ export default function Home() {
         </footer>
       </section>
     </>
+  );
+}
+
+// photo.fill, as on the app's "Want me to take this?" bubble.
+function PhotoIcon() {
+  return (
+    <svg className="sym" viewBox="0 0 20 16" aria-hidden>
+      <path
+        fill="currentColor"
+        fillRule="evenodd"
+        d="M3 1h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2zm11 3.2a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2zM2.5 13.2l4.6-5.4 3.4 3.8 2-2 4.9 3.6z"
+      />
+    </svg>
   );
 }

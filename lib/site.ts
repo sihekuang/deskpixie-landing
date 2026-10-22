@@ -1,9 +1,9 @@
 export const SITE_URL = "https://deskpixie.ai";
 export const SITE_NAME = "DeskPixie";
-// "Desktop voice pixie" is the product README's own description; keep the two in step.
-export const SITE_TITLE = "DeskPixie: a desktop voice pixie for your coding agents on macOS";
+// "A voice layer on top of your coding agents" is the product README's own description; keep the two in step.
+export const SITE_TITLE = "DeskPixie: a voice layer on top of your coding agents, for macOS";
 export const SITE_DESCRIPTION =
-  "DeskPixie is a desktop voice pixie you talk to out loud. It hands real work to Claude Code or Codex agents, watches your sessions, and tells you when they're done. Free and open source (Apache 2.0) for macOS.";
+  "DeskPixie is a voice layer on top of your coding agents. Talk to Pixie, or type, and it hands real work to Claude Code or Codex, watches the sessions you start, and tells you when they're done. Free and open source (Apache 2.0) for macOS.";
 export const LICENSE_URL = "https://www.apache.org/licenses/LICENSE-2.0";
 // Google Search Console HTML-tag token (the `content` value). Leave empty to emit nothing;
 // the DNS TXT route in docs/search-console.md needs no token.

@@ -649,12 +649,87 @@ a:active {
   background: var(--bg);
   color: var(--primary);
 }
-/* Tall enough for the full card (answer, status, input); it opens downward from the row. */
+/* Tall enough for the earlier bubble over a caption with a session button; it fills downward. */
 .card-slot {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(4 * var(--u));
   width: 100%;
-  height: calc(118 * var(--u));
+  height: calc(184 * var(--u));
+}
+/* The other side's last words (#254), above the caption, fading after a few seconds. */
+.earlier {
+  width: calc(260 * var(--u));
+  max-width: 100%;
+  padding: calc(6 * var(--u)) calc(8 * var(--u));
+  border-radius: calc(12 * var(--u));
+  text-align: left;
+  font-size: calc(12 * var(--u));
+  line-height: 1.35;
+}
+.earlier .chat-who {
+  padding: 0;
+  margin-bottom: calc(2 * var(--u));
+}
+/* Fades, then folds away so the caption moves up into its place, as the app drops it. */
+.earlier {
+  overflow: hidden;
+  max-height: calc(90 * var(--u));
+}
+.earlier.fade {
+  animation: earlier-fade 1s ease-out 1.8s forwards;
+}
+@keyframes earlier-fade {
+  55% {
+    opacity: 0;
+    max-height: calc(90 * var(--u));
+  }
+  100% {
+    opacity: 0;
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-width: 0;
+    margin-bottom: calc(-4 * var(--u));
+  }
+}
+.sym {
+  width: 1em;
+  height: 1em;
+  flex: none;
+}
+.reply-arrows {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(4 * var(--u));
+  color: var(--primary);
+  font-variant-numeric: tabular-nums;
+}
+.reply-arrows .sym {
+  width: 0.7em;
+}
+/* A button to the session a reply is about (#261): terminal symbol, its name, ↗. */
+.session-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(4 * var(--u));
+  max-width: 100%;
+  margin: calc(4 * var(--u)) calc(8 * var(--u)) 0;
+  padding: calc(3 * var(--u)) calc(8 * var(--u));
+  border-radius: 999px;
+  font-size: calc(10 * var(--u));
+  font-weight: 600;
+  color: var(--primary);
+}
+.chat-card > .session-btn {
+  padding-left: calc(8 * var(--u));
+  padding-right: calc(8 * var(--u));
+}
+.session-btn > span:not([aria-hidden]) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .chat-card {
   width: calc(260 * var(--u));
@@ -725,6 +800,15 @@ a:active {
 }
 .chat-placeholder {
   color: var(--tertiary);
+}
+.chat-field {
+  flex: 1;
+}
+.chat-input .clip {
+  width: calc(12 * var(--u));
+  height: calc(15 * var(--u));
+  color: var(--secondary);
+  margin-bottom: calc(1 * var(--u));
 }
 .chat-input .caret {
   display: inline-block;
@@ -865,6 +949,7 @@ a:active {
   letter-spacing: -0.03em;
 }
 .feat-intro > p,
+.setup > p,
 .pixies > p,
 .closing > p:not(.trial-note) {
   max-width: 540px;
@@ -1157,6 +1242,223 @@ kbd.wide {
   font-size: 21px;
   line-height: 1.45;
   letter-spacing: -0.02em;
+}
+
+.said-session {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid var(--rule);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* Attachments: a dark desktop with the app's offer bubble and text box. */
+.attach {
+  gap: 12px;
+  background: radial-gradient(circle at 50% 40%, var(--night-hi) 0%, var(--night) 55%, var(--night-lo) 100%);
+  --u: 1.3px;
+}
+.attach .offer {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(6 * var(--u));
+  padding: calc(6 * var(--u)) calc(12 * var(--u));
+  border-radius: 999px;
+  font-size: calc(12 * var(--u));
+  font-weight: 600;
+}
+.attach .chat-card {
+  width: calc(260 * var(--u));
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(4 * var(--u));
+  padding-top: calc(4 * var(--u));
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(4 * var(--u));
+  max-width: 100%;
+  padding: calc(3 * var(--u)) calc(6 * var(--u));
+  border-radius: calc(6 * var(--u));
+  background: rgba(255, 255, 255, 0.1);
+  font-size: calc(10 * var(--u));
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.chip b {
+  font-size: 0.85em;
+  color: var(--secondary);
+}
+.chip .thumb {
+  flex: none;
+  width: calc(22 * var(--u));
+  height: calc(16 * var(--u));
+  border-radius: calc(3 * var(--u));
+  background:
+    linear-gradient(180deg, #2b2f3a 0 28%, transparent 28%),
+    repeating-linear-gradient(180deg, #c9463d 0 2px, transparent 2px 5px) 4px 7px / 60% 7px no-repeat,
+    #f4f4f2;
+}
+.chip .thumb.doc {
+  width: calc(13 * var(--u));
+  background:
+    repeating-linear-gradient(180deg, #9aa0ad 0 1.5px, transparent 1.5px 4px) 3px 4px / 60% 70% no-repeat,
+    #fff;
+}
+.attach .chat-input {
+  margin-top: calc(6 * var(--u));
+  border-top: 1px solid var(--sep);
+}
+.attach-note {
+  font-size: 12px;
+  color: var(--secondary);
+}
+
+/* Canvas: a light page next to Pixie, in the canvas design system's colors. */
+.canvas {
+  gap: 14px;
+}
+.canvas-win {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 14px;
+  background: #f6f6f3;
+  overflow: hidden;
+  border: 1px solid #deded7;
+  box-shadow: 0 14px 34px rgba(26, 24, 20, 0.12);
+}
+.canvas-win .term-bar {
+  background: #efefea;
+  color: #66665f;
+}
+.canvas-page {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 14px;
+  padding: 16px 18px;
+  border-radius: 10px;
+  background: #fff;
+  border: 1px solid #deded7;
+  font-family: -apple-system, BlinkMacSystemFont, var(--font-sans);
+  text-align: left;
+}
+.canvas-page b {
+  font-size: 15px;
+  font-weight: 650;
+}
+.canvas-sub {
+  font-size: 12px;
+  color: #66665f;
+}
+.bars {
+  display: grid;
+  gap: 10px;
+  margin-top: 12px;
+}
+.bar-row {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  color: #66665f;
+}
+.bar-row div {
+  display: grid;
+  gap: 3px;
+}
+.bar-row i,
+.canvas-legend i {
+  display: block;
+  height: 9px;
+  border-radius: 3px;
+}
+.b1 {
+  background: #2f6fde;
+}
+.b2 {
+  background: #e07b39;
+}
+.canvas-legend {
+  display: flex;
+  gap: 14px;
+  margin-top: 10px;
+  font-size: 12px;
+  color: #66665f;
+}
+.canvas-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.canvas-legend i {
+  width: 9px;
+}
+.canvas-pixie {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--ink-muted);
+}
+
+/* Set up in one window */
+.setup {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 110px 0 0;
+  text-align: center;
+}
+.setup-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 44px;
+  list-style: none;
+  counter-reset: step;
+  text-align: left;
+}
+.setup-steps li {
+  counter-increment: step;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 22px 22px 24px;
+  border-radius: 18px;
+  background: var(--paper-2);
+}
+.setup-steps li::before {
+  content: "0" counter(step);
+  font-family: var(--font-display);
+  font-size: 14px;
+  color: #0f8a62;
+  margin-bottom: 6px;
+}
+.setup-steps b {
+  font-size: 17px;
+  font-weight: 600;
+}
+.setup-steps span {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink-muted);
+}
+@media (max-width: 760px) {
+  .setup-steps {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* 4: terminal */
