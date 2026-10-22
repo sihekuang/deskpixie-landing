@@ -37,7 +37,7 @@ const BENEFITS = [
   { icon: "◉", title: "Talk or type", body: "Press ⌃⌥Space and say it, or type it." },
   { icon: "⇢", title: "Hand off real work", body: "Claude Code or Codex does it for you." },
   { icon: "✦", title: "Hear when it's done", body: "One sentence. No terminal-watching." },
-  { icon: "▣", title: "Keys stay on your Mac", body: "Keychain storage. No telemetry." },
+  { icon: "▣", title: "Keys stay on your computer", body: "Keychain storage. No telemetry." },
 ];
 
 // Privacy panel: 32 half-hour cells, lit only for one conversation with Pixie.
@@ -402,8 +402,8 @@ export default function Home() {
           <Feature
             n={7}
             id="privacy"
-            title="Keeps your keys on your Mac"
-            body="Your API keys live in the macOS Keychain and are never logged. The microphone is only on while a conversation is open. Agent work runs through your own Claude Code and Codex, and pix never edits your config files."
+            title="Keeps your keys on your computer"
+            body="Your API keys live in the system Keychain and are never logged. The microphone is only on while a conversation is open. Agent work runs through your own Claude Code and Codex, and pix never edits your config files."
           >
             <div className="feat-panel privacy">
               <p className="mic-title">Your mic, across a day</p>
@@ -426,7 +426,7 @@ export default function Home() {
                 </span>
               </div>
 
-              <p className="mic-title">Never leaves your Mac</p>
+              <p className="mic-title">Never leaves your computer</p>
               <ul className="home-tiles">
                 {HOME_TILES.map(([tag, text]) => (
                   <li key={tag}>
@@ -457,7 +457,7 @@ export default function Home() {
             </li>
             <li>
               <b>Allow permissions once</b>
-              <span>Every macOS permission up front, so nothing interrupts you later.</span>
+              <span>Every permission up front, so nothing interrupts you later.</span>
             </li>
           </ol>
         </div>
@@ -474,7 +474,7 @@ export default function Home() {
         <div className="closing">
           <Image src="/icon-1024.png" alt="" width={96} height={96} className="closing-icon" />
           <h2>Less terminal-watching. More getting on with it.</h2>
-          <p>Talk or type to your coding agents, and hear back from them. Free on macOS.</p>
+          <p>Talk or type to your coding agents, and hear back from them. Free and open source.</p>
           <a href={DOWNLOAD_URL} className="primary-cta dark">
             Download for Mac <span aria-hidden>↗</span>
           </a>
