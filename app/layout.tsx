@@ -33,13 +33,15 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
-    images: [{ url: "/icon-1024.png", width: 1024, height: 1024, alt: "DeskPixie" }],
+    // The same card as the GitHub repo's social preview (deskpixie docs/images/social-preview.png),
+    // so a link to either looks the same in messages.
+    images: [{ url: "/social-preview.png", width: 1280, height: 640, alt: "Pixie, and DeskPixie: a voice layer on top of your coding agents" }],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
-    images: ["/icon-1024.png"],
+    images: ["/social-preview.png"],
   },
   ...(GOOGLE_SITE_VERIFICATION
     ? { verification: { google: GOOGLE_SITE_VERIFICATION } }
