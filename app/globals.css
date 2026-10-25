@@ -1810,7 +1810,8 @@ kbd.wide {
 }
 .sf-links {
   display: flex;
-  gap: 24px;
+  flex-wrap: wrap;
+  gap: 8px 24px;
 }
 .sf-links a:hover {
   color: var(--ink);
@@ -2277,5 +2278,128 @@ html[data-motion="off"] *::after {
   .stack li {
     padding: 8px 12px;
     font-size: 13px;
+  }
+}
+
+/* ---------- Make your own pixie ---------- */
+
+.make {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 70px 0 40px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 56px;
+  align-items: center;
+  scroll-margin-top: 24px;
+}
+.make-sheet {
+  display: flex;
+  gap: 14px;
+  padding: 28px;
+  border-radius: 24px;
+  background:
+    radial-gradient(rgba(255, 255, 255, 0.18) 1px, transparent 1.5px) 0 0 / 22px 22px,
+    linear-gradient(180deg, var(--night-hi), var(--night-lo));
+}
+.make-sheet img {
+  width: 256px;
+  height: auto;
+  image-rendering: pixelated;
+  /* Faint cell lines, as in a pixel editor. */
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px) 0 0 / 32px 32px,
+    linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px) 0 0 / 32px 32px;
+}
+.make-rows {
+  list-style: none;
+  display: grid;
+  grid-auto-rows: 32px;
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: 12px;
+  color: #b9bfd8;
+}
+.make-rows li:last-child {
+  color: var(--gold);
+}
+.make-copy h2 {
+  font-family: var(--font-display);
+  font-variation-settings: "ELSH" 100;
+  font-weight: 400;
+  font-size: clamp(28px, 3.4vw, 40px);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+.make-copy > p {
+  margin-top: 16px;
+  font-size: 17px;
+  line-height: 27px;
+  color: var(--ink-muted);
+}
+.make-copy code {
+  font-size: 0.9em;
+  padding: 1px 6px;
+  border-radius: 6px;
+  background: var(--paper-2);
+}
+.make-steps {
+  margin-top: 22px;
+  list-style: none;
+  counter-reset: step;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.make-steps li {
+  counter-increment: step;
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  column-gap: 8px;
+}
+.make-steps li::before {
+  content: "0" counter(step);
+  grid-row: span 2;
+  font-family: var(--font-display);
+  font-size: 14px;
+  line-height: 24px;
+  color: #0f8a62;
+}
+.make-steps b {
+  font-size: 16px;
+  font-weight: 600;
+}
+.make-steps span {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink-muted);
+}
+.make-link {
+  display: inline-block;
+  margin-top: 24px;
+  font-weight: 600;
+  color: #0f8a62;
+  text-decoration: none;
+}
+.make-link:hover {
+  text-decoration: underline;
+}
+@media (max-width: 760px) {
+  .make {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+    padding-top: 40px;
+  }
+  .make-sheet {
+    justify-self: center;
+    padding: 20px;
+  }
+  .make-sheet img {
+    width: 192px;
+    background-size: 24px 24px;
+  }
+  .make-rows {
+    grid-auto-rows: 24px;
+    font-size: 11px;
   }
 }

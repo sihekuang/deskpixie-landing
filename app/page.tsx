@@ -41,6 +41,9 @@ const BENEFITS = [
 ];
 
 // Privacy panel: 32 half-hour cells, lit only for one conversation with Pixie.
+const SHEET_ROWS = ["idle", "listening", "thinking", "delegating", "happy", "error", "mouths"];
+const PIXIE_GUIDE_URL = `${REPO_URL}/blob/main/docs/making-a-pixie.md`;
+
 const MIC_CELLS = 32;
 const MIC_ON = [19, 20, 21];
 const CANVAS_BARS: [string, number, number][] = [
@@ -471,6 +474,42 @@ export default function Home() {
           <PixiePicker />
         </div>
 
+        <div id="make" className="make">
+          <div className="make-sheet">
+            {/* Dino's whole sheet: one row per animation, and a row of mouths. */}
+            <Image src="/pixies/dino.png" alt="Dino's sprite sheet: one row of frames per animation" width={256} height={224} unoptimized />
+            <ol className="make-rows" aria-hidden>
+              {SHEET_ROWS.map((row) => (
+                <li key={row}>{row}</li>
+              ))}
+            </ol>
+          </div>
+          <div className="make-copy">
+            <h2>Make your own pixie</h2>
+            <p>
+              A pixie is one sprite sheet and a short <code>pixie.json</code>. Draw it in any pixel
+              editor; no rebuilding the app.
+            </p>
+            <ol className="make-steps">
+              <li>
+                <b>Copy a built-in pixie</b>
+                <span>Dino has every animation, so it&apos;s the easiest to start from.</span>
+              </li>
+              <li>
+                <b>Redraw its sheet</b>
+                <span>One row per mood, one cell per frame, and a row of mouth shapes for talking.</span>
+              </li>
+              <li>
+                <b>Drop it in your pixies folder</b>
+                <span>Pixie ▸ Reload Pixies, then pick it in Settings. Zip the folder to share it.</span>
+              </li>
+            </ol>
+            <a href={PIXIE_GUIDE_URL} className="make-link">
+              Read the guide on GitHub <span aria-hidden>↗</span>
+            </a>
+          </div>
+        </div>
+
         <div className="closing">
           <Image src="/icon-1024.png" alt="" width={96} height={96} className="closing-icon" />
           <h2>Less terminal-watching. More getting on with it.</h2>
@@ -495,6 +534,7 @@ export default function Home() {
           <nav className="sf-links" aria-label="Footer">
             <a href="#features">Features</a>
             <a href="#pixies">Pixies</a>
+            <a href={PIXIE_GUIDE_URL}>Make a pixie</a>
             <a href="#privacy">Privacy</a>
             <a href={REPO_URL}>GitHub</a>
             <a href={DOWNLOAD_URL}>Download</a>
