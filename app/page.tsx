@@ -106,7 +106,7 @@ export default function Home() {
           <main id="main" className="hero">
             <div className="compat anim">
               <span className="compat-pill">
-                Works with Claude Code &amp; Codex <span className="compat-soon">More agents coming</span>
+                Keep Claude Code or Codex. No switching. <span className="compat-soon">More agents coming</span>
               </span>
             </div>
 
@@ -182,8 +182,9 @@ export default function Home() {
         <div className="workflow">
           <h2>Your workflow, now with a voice.</h2>
           <p>
-            DeskPixie doesn’t change how you work. Keep your terminal, your editor and the agents you
-            already run. Pixie adds a voice on top and meets you right where you’re working.
+            DeskPixie isn’t another coding agent to switch to. It’s one layer across the agents you
+            already use, Claude Code and Codex today with more to come. Keep your terminal, your editor
+            and your vendor. Pixie adds a voice on top and meets you right where you’re working.
           </p>
           <ul className="stack" aria-label="Your terminal, your editor and your agents, plus a voice">
             <li>Your terminal</li>
@@ -208,7 +209,8 @@ export default function Home() {
           <h2>Your agents are busy. Pixie keeps watch.</h2>
           <p>
             Pixie turns long agent runs into short spoken updates, and turns what you say into work
-            for them. You stay in the loop without staring at a terminal.
+            for them. Your hands come off the keyboard, and you know how every session is doing
+            without checking on it.
           </p>
           <p className="compat-note">
             <b>Claude Code</b> · <b>Codex</b> · any terminal: WebStorm, iTerm, VS Code
@@ -223,7 +225,7 @@ export default function Home() {
           <Feature
             n={1}
             title="Talk to it, or type"
-            body="Press ⌃⌥Space or double-click Pixie and just talk. Answers come back short and spoken, and Pixie does quick things itself: the time, the weather, a timer, a sum, some music. Your words and Pixie’s show as captions while you talk, and ‹ › steps back through the last few minutes of replies. In a meeting? Flip the toggle under Pixie to 💬 and type instead: the answer shows as text, without a sound."
+            body="Press ⌃⌥Space or double-click Pixie and just talk, hands off the keyboard. Answers come back short and spoken, and Pixie does quick things itself: the time, the weather, a timer, a sum, some music. Your words and Pixie’s show as captions while you talk, and ‹ › steps back through the last few minutes of replies. In a meeting? Flip the toggle under Pixie to 💬 and type instead: the answer shows as text, without a sound."
           >
             <div className="feat-panel talk">
               <div className="keys" aria-label="Control, Option, Space">
@@ -313,7 +315,7 @@ export default function Home() {
             n={4}
             reverse
             title="Tells you when it’s done"
-            body="When a long turn in one of your sessions ends, Pixie says what happened in one sentence. Each session names itself after its project and task, so you can say “tell the login-bug one to stop.” A button under Pixie’s words takes you straight to that session’s terminal tab."
+            body="No more checking back on a session, or flipping through tabs to find the one you meant. When a long turn in one of your sessions ends, Pixie says what happened in one sentence. Each session names itself after its project and task, so you can say “tell the login-bug one to stop.” A button under Pixie’s words takes you straight to that session’s terminal tab."
           >
             <DoneDemo />
           </Feature>

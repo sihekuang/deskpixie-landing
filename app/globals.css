@@ -2403,3 +2403,10 @@ html[data-motion="off"] *::after {
     font-size: 11px;
   }
 }
+
+/* On a phone, the pill keeps the promise and drops the roadmap (it's under Features too). */
+@media (max-width: 440px) {
+  .compat-soon {
+    display: none;
+  }
+}
