@@ -2410,3 +2410,190 @@ html[data-motion="off"] *::after {
     display: none;
   }
 }
+
+/* ---------- Compare ---------- */
+
+.compare {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 110px 0 0;
+  text-align: center;
+  scroll-margin-top: 24px;
+}
+.compare > p:not(.compare-note) {
+  max-width: 560px;
+  margin: 22px auto 0;
+  font-size: 18px;
+  line-height: 28px;
+  color: var(--ink-muted);
+}
+/* The table scrolls inside its box on a phone, never the page. */
+.compare-scroll {
+  margin-top: 44px;
+  overflow-x: auto;
+  border-radius: 20px;
+  border: 1px solid var(--rule);
+  background: #fff;
+}
+.compare-table {
+  width: 100%;
+  min-width: 680px;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 14px;
+  line-height: 1.45;
+}
+.compare-table th,
+.compare-table td {
+  padding: 14px 16px;
+  vertical-align: top;
+  border-bottom: 1px solid var(--rule);
+}
+.compare-table tbody tr:last-child > * {
+  border-bottom: 0;
+}
+.compare-table thead th {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-muted);
+}
+.compare-table tbody th {
+  width: 17%;
+  font-weight: 600;
+  color: var(--ink);
+}
+.compare-table td {
+  width: 27.6%;
+  color: var(--ink-muted);
+}
+.compare-table .us {
+  background: rgba(18, 185, 129, 0.07);
+  color: var(--ink);
+}
+.compare-table thead .us {
+  color: #0f8a62;
+}
+.compare-sub {
+  margin-top: 56px;
+  font-family: var(--font-display);
+  font-variation-settings: "ELSH" 100;
+  font-weight: 400;
+  font-size: 26px;
+  letter-spacing: -0.02em;
+}
+.stronger {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 24px;
+  text-align: left;
+}
+.stronger-card {
+  padding: 22px 24px;
+  border-radius: 20px;
+  background: var(--paper-2);
+}
+.stronger-card b {
+  font-size: 17px;
+}
+.stronger-card ul {
+  list-style: disc;
+  margin-top: 10px;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink-muted);
+}
+.compare-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 24px;
+  text-align: left;
+}
+.compare-item {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 22px;
+  border-radius: 20px;
+  background: var(--paper-2);
+}
+/* Your question, as a chat bubble on the right. */
+.ask {
+  align-self: flex-end;
+  max-width: 88%;
+  padding: 10px 14px;
+  border-radius: 16px 16px 4px 16px;
+  background: #fff;
+  border: 1px solid var(--rule);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+/* Pixie's answer, on the left with Pixie beside it. */
+.answer {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+}
+.answer .sprite {
+  flex: none;
+}
+.answer p {
+  padding: 12px 15px;
+  border-radius: 16px 16px 16px 4px;
+  background: linear-gradient(180deg, var(--night-hi), var(--night));
+  color: #e4e7f4;
+  font-size: 15px;
+  line-height: 1.5;
+}
+.compare-cta {
+  margin-top: 40px;
+}
+.compare-note {
+  max-width: 620px;
+  margin: 18px auto 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--ink-muted);
+}
+@media (max-width: 760px) {
+  .stronger,
+  .compare-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .compare-item {
+    padding: 16px;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+@media (max-width: 760px) {
+  /* Keep the row names in view while the columns scroll under them. */
+  .compare-table tbody th,
+  .compare-table thead th:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    background: #fff;
+    box-shadow: 1px 0 0 var(--rule);
+  }
+  .compare-table {
+    min-width: 640px;
+  }
+  .compare-table tbody th {
+    width: 104px;
+  }
+}

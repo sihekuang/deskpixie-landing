@@ -6,6 +6,7 @@ import { DOWNLOAD_URL } from "@/lib/site";
 
 const LINKS = [
   { href: "#top", label: "Home" },
+  { href: "#compare", label: "Compare" },
   { href: "#features", label: "Features" },
   { href: "#pixies", label: "Pixies" },
   { href: "#privacy", label: "Privacy" },

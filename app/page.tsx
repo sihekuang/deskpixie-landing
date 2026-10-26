@@ -40,6 +40,48 @@ const BENEFITS = [
   { icon: "▣", title: "Keys stay on your computer", body: "Keychain storage. No telemetry." },
 ];
 
+// DeskPixie next to the two tools we're asked about most. Keep it fair: each cell says only what
+// that product's public pages (or coverage of OpenAI's releases) say, and "checked" dates the table.
+const COMPARE_CHECKED = "October 2026";
+const COMPARE_ROWS: [string, string, string, string][] = [
+  ["What it is", "A voice layer over your coding agents", "Voice built into OpenAI’s Codex and ChatGPT apps", "Dictation that types what you say in any app"],
+  ["Talks back", "Yes, out loud, or as text in 💬 mode", "Yes, in its conversation modes", "No. It writes your words for you"],
+  ["Coding agents", "Claude Code and Codex", "Codex", "Doesn’t run agents; types into their prompt box"],
+  ["Hands off work", "To any session you name, Claude Code or Codex, or to a coordinator that starts its own workers", "Only to subagents its own session starts", "No"],
+  ["Sessions you start yourself", "Sees and steers them all at once, in any terminal, with pix", "No. Each session manages only itself and its subagents", "Not its job"],
+  ["When a session is done", "Says so in one sentence and takes you to its tab", "Agents report back in the conversation", "Not its job"],
+  ["Runs on", "macOS 14+ on Apple silicon", "Codex CLI and the ChatGPT desktop app", "Mac, Windows, iPhone and Android"],
+  ["Price", "Free and open source; your own OpenAI or Gemini key for voice", "Comes with your ChatGPT or Codex plan", "Free tier; Pro from $12 a month, billed yearly"],
+];
+const COMPARE_STRONGER = [
+  {
+    who: "Codex voice mode",
+    points: [
+      "Built in: nothing to install and no extra key.",
+      "Made by the team that makes the agent.",
+      "Best fit if Codex is the only agent you use.",
+    ],
+  },
+  {
+    who: "Wispr Flow",
+    points: [
+      "Dictation everywhere: email, Slack, docs, any text box.",
+      "On Windows and phones too, in 100 languages.",
+      "Team features: shared dictionaries, SSO, SOC 2 Type II.",
+    ],
+  },
+];
+const COMPARE_FAQ = [
+  {
+    q: "Can Codex voice mode move between sessions freely?",
+    a: "No. A Codex session manages itself and the subagents it starts, not the other sessions you have open. I move between all of yours: Claude Code and Codex, my coordinator’s workers, and sessions you started yourself in any terminal. Say “show me the api session” and its tab comes to the front.",
+  },
+  {
+    q: "How is this different from Wispr Flow?",
+    a: "Wispr Flow turns your voice into text wherever your cursor is. I’m not dictation: you tell me the job, I hand it to an agent and come back with the result. They work well together, too: dictate into my 💬 box with Wispr Flow.",
+  },
+];
+
 // Privacy panel: 32 half-hour cells, lit only for one conversation with Pixie.
 const SHEET_ROWS = ["idle", "listening", "thinking", "delegating", "happy", "error", "mouths"];
 const PIXIE_GUIDE_URL = `${REPO_URL}/blob/main/docs/making-a-pixie.md`;
@@ -203,6 +245,78 @@ export default function Home() {
               <Sprite pixie="bit" scale={1} /> a voice
             </li>
           </ul>
+        </div>
+
+        <div id="compare" className="compare">
+          <h2>DeskPixie vs. Codex voice mode and Wispr Flow</h2>
+          <p>
+            Good tools, different jobs. Here’s a fair look at where each one fits, including where the
+            others are stronger.
+          </p>
+          <div className="compare-scroll">
+            <table className="compare-table">
+              <thead>
+                <tr>
+                  <th scope="col">
+                    <span className="sr-only">Feature</span>
+                  </th>
+                  <th scope="col" className="us">
+                    DeskPixie
+                  </th>
+                  <th scope="col">Codex voice mode</th>
+                  <th scope="col">Wispr Flow</th>
+                </tr>
+              </thead>
+              <tbody>
+                {COMPARE_ROWS.map(([row, us, codex, wispr]) => (
+                  <tr key={row}>
+                    <th scope="row">{row}</th>
+                    <td className="us">{us}</td>
+                    <td>{codex}</td>
+                    <td>{wispr}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="compare-sub">Where they’re stronger</h3>
+          <div className="stronger">
+            {COMPARE_STRONGER.map((s) => (
+              <div key={s.who} className="stronger-card">
+                <b>{s.who}</b>
+                <ul>
+                  {s.points.map((pt) => (
+                    <li key={pt}>{pt}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="compare-sub">Questions we get asked</h3>
+          <ul className="compare-list">
+            {COMPARE_FAQ.map((c) => (
+              <li key={c.q} className="compare-item">
+                <p className="ask">{c.q}</p>
+                <div className="answer">
+                  <Sprite pixie="bit" scale={1} />
+                  <p>{c.a}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+
+          <div className="compare-cta">
+            <a href={DOWNLOAD_URL} className="primary-cta dark">
+              Try DeskPixie free <span aria-hidden>↗</span>
+            </a>
+          </div>
+          <p className="compare-note">
+            Checked {COMPARE_CHECKED} from each product’s public pages and release coverage; features and prices change.
+            Codex is a trademark of OpenAI and Wispr Flow of Wispr. DeskPixie isn’t affiliated with
+            either.
+          </p>
         </div>
 
         <div id="features" className="feat-intro">
