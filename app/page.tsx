@@ -399,7 +399,7 @@ export default function Home() {
           <Feature
             n={3}
             title="Hand it what you’re looking at"
-            body="Copy a screenshot of an error, a PDF or a log file, and Pixie offers to take it. Paste it into the text box, drop it on Pixie, pick it with 📎, or just say “take what I copied.” The coordinator, and any worker it hands the job to, gets the file with your request."
+            body="Copy a screenshot of an error, a PDF or a log file, and Pixie offers to take it. Paste it into the text box, drop it on Pixie, pick it with 📎, or just say “take what I copied.” The coordinator, and any worker it hands the job to, gets the file with your request, and your message in the chat shows what went with it, pictures as thumbnails."
           >
             <div className="feat-panel attach mac-ui">
               <span className="offer mac-material">
@@ -437,7 +437,7 @@ export default function Home() {
           <Feature
             n={5}
             title="Reaches the sessions you already run"
-            body="Start Claude Code or Codex with pix in any terminal: WebStorm, iTerm, VS Code. The agent looks and works exactly as usual. The difference is that Pixie can now see that session, message it, interrupt it and pass on its questions, right next to its own workers. Say “show me the api session” and its tab comes to the front. Install pix from Settings ▸ Coordinator ▸ pix command."
+            body="Start Claude Code or Codex with pix in any terminal: WebStorm, iTerm, VS Code. The agent looks and works exactly as usual. The difference is that Pixie can now see that session, message it, interrupt it, pass on its questions and answer a menu for you when you say which option, even one with several questions, right next to its own workers. A message you send can cut in on a busy session, and “stop that” ends its turn. Say “show me the api session” and its tab comes to the front. Install pix from Settings ▸ Coordinator ▸ pix command."
           >
             <div className="feat-panel term">
               <div className="term-win">
