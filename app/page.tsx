@@ -399,7 +399,7 @@ export default function Home() {
           <Feature
             n={3}
             title="Hand it what you’re looking at"
-            body="Copy a screenshot of an error, a PDF or a log file, and Pixie offers to take it. Paste it into the text box, drop it on Pixie, pick it with 📎, or just say “take what I copied.” The coordinator, and any worker it hands the job to, gets the file with your request."
+            body="Copy a screenshot of an error, a PDF or a log file, and Pixie offers to take it. Paste it into the text box, drop it on Pixie, pick it with 📎, or just say “take what I copied.” The coordinator, and any worker it hands the job to, gets the file with your request. In the chat, your message shows what went with it, pictures as thumbnails."
           >
             <div className="feat-panel attach mac-ui">
               <span className="offer mac-material">
@@ -437,7 +437,7 @@ export default function Home() {
           <Feature
             n={5}
             title="Reaches the sessions you already run"
-            body="Start Claude Code or Codex with pix in any terminal: WebStorm, iTerm, VS Code. The agent looks and works exactly as usual. The difference is that Pixie can now see that session, message it, interrupt it and pass on its questions, right next to its own workers. Say “show me the api session” and its tab comes to the front. Install pix from Settings ▸ Coordinator ▸ pix command."
+            body="Start Claude Code or Codex with pix in any terminal: WebStorm, iTerm, VS Code. The agent looks and works exactly as usual. The difference is that Pixie can now see that session, message it, interrupt it and pass on its questions, right next to its own workers. Say “show me the api session” and its tab comes to the front. If a session is busy, say “stop it and send it” and Pixie interrupts it and sends your message right away. A question it asks can be answered right in Pixie’s bubble or the chat, and a loose “want me to…?” can simply be dismissed. Install pix from Settings ▸ Coordinator ▸ pix command."
           >
             <div className="feat-panel term">
               <div className="term-win">
@@ -585,7 +585,7 @@ export default function Home() {
           <h2>Pick your pixie</h2>
           <p>
             Four hand-drawn characters, each with its own moods for listening, thinking, handing off
-            work and celebrating.
+            work and celebrating. The menu bar and Dock icons follow the one you pick.
           </p>
           <PixiePicker />
         </div>
