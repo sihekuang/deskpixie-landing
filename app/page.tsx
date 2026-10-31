@@ -437,7 +437,7 @@ export default function Home() {
           <Feature
             n={5}
             title="Reaches the sessions you already run"
-            body="Start Claude Code or Codex with pix in any terminal: WebStorm, iTerm, VS Code. The agent looks and works exactly as usual. The difference is that Pixie can now see that session, message it, interrupt it and pass on its questions, right next to its own workers. Say “show me the api session” and its tab comes to the front. Install pix from Settings ▸ Coordinator ▸ pix command."
+            body="Start Claude Code or Codex with pix in any terminal: WebStorm, iTerm, VS Code. The agent looks and works exactly as usual. The difference is that Pixie can now see that session, message it, interrupt it and pass on its questions (even menus with several questions or picks), right next to its own workers. Say “show me the api session” and its tab comes to the front. Install pix from Settings ▸ Coordinator ▸ pix command."
           >
             <div className="feat-panel term">
               <div className="term-win">
@@ -617,7 +617,7 @@ export default function Home() {
               </li>
               <li>
                 <b>Drop it in your pixies folder</b>
-                <span>Pixie ▸ Reload Pixies, then pick it in Settings. Zip the folder to share it.</span>
+                <span>Pixie ▸ Reload Pixies, then pick it in Settings. While it runs, your menu bar and Dock icons follow the pixie you pick. Zip the folder to share it.</span>
               </li>
             </ol>
             <a href={PIXIE_GUIDE_URL} className="make-link">
