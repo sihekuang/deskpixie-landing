@@ -339,7 +339,7 @@ export default function Home() {
           <Feature
             n={1}
             title="Talk to it, or type"
-            body="Press ⌃⌥Space or double-click Pixie and just talk, hands off the keyboard. Answers come back short and spoken, and Pixie does quick things itself: the time, the weather, a timer, a sum, some music. Your words and Pixie’s show as captions while you talk, and ‹ › steps back through the last few minutes of replies. In a meeting? Flip the toggle under Pixie to 💬 and type instead: the answer shows as text, without a sound."
+            body="Press ⌃⌥Space or double-click Pixie and just talk, hands off the keyboard. Answers come back short and spoken, and Pixie does quick things itself: the time, the weather, a timer, a sum, some music. Your words and Pixie’s show as captions while you talk, and ‹ › steps back through the last few minutes of replies. In a meeting? Flip the toggle under Pixie to 💬 and type instead: the answer shows as text, without a sound. The chat window (⌘⇧C, or the round button above Pixie) keeps the whole conversation with every agent, voice and typed: scroll back, reply to a question, or jump to a session’s terminal."
           >
             <div className="feat-panel talk">
               <div className="keys" aria-label="Control, Option, Space">
@@ -437,7 +437,7 @@ export default function Home() {
           <Feature
             n={5}
             title="Reaches the sessions you already run"
-            body="Start Claude Code or Codex with pix in any terminal: WebStorm, iTerm, VS Code. The agent looks and works exactly as usual. The difference is that Pixie can now see that session, message it, interrupt it and pass on its questions, right next to its own workers. Say “show me the api session” and its tab comes to the front. Install pix from Settings ▸ Coordinator ▸ pix command."
+            body="Start Claude Code or Codex with pix in any terminal: WebStorm, iTerm, VS Code. The agent looks and works exactly as usual. The difference is that Pixie can now see that session, message it, stop its current turn and pass on its questions, right next to its own workers. Answer its questions or pick from its menus by voice, even a menu with several questions, or tap Reply… in the chat window. A question stays on the badge until you deal with it. Say “show me the api session” and its tab comes to the front. Install pix from Settings ▸ Coordinator ▸ pix command."
           >
             <div className="feat-panel term">
               <div className="term-win">
@@ -585,7 +585,7 @@ export default function Home() {
           <h2>Pick your pixie</h2>
           <p>
             Four hand-drawn characters, each with its own moods for listening, thinking, handing off
-            work and celebrating.
+            work and celebrating. The one you pick is also the icon in your menu bar and Dock.
           </p>
           <PixiePicker />
         </div>
