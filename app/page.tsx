@@ -437,7 +437,7 @@ export default function Home() {
           <Feature
             n={5}
             title="Reaches the sessions you already run"
-            body="Start Claude Code or Codex with pix in any terminal: WebStorm, iTerm, VS Code. The agent looks and works exactly as usual. The difference is that Pixie can now see that session, message it, interrupt it and pass on its questions, right next to its own workers. Say “show me the api session” and its tab comes to the front. When one asks a question or opens a menu, answer by voice or in the chat, and say “stop that” to end its turn. Install pix from Settings ▸ Coordinator ▸ pix command."
+            body="Start Claude Code or Codex with pix in any terminal: WebStorm, iTerm, VS Code. The agent looks and works exactly as usual. The difference is that Pixie can now see that session, message it, interrupt it and pass on its questions, right next to its own workers. Say “show me the api session” and its tab comes to the front. When one asks a question or opens a menu, answer in the chat, or by voice. Right after Pixie hands something to a session, say “stop that” to end its turn. Install pix from Settings ▸ Coordinator ▸ pix command."
           >
             <div className="feat-panel term">
               <div className="term-win">
@@ -477,9 +477,9 @@ export default function Home() {
             n={6}
             reverse
             title="One chat for everything said"
-            body="Open the chat window from the round button above Pixie, or press ⌘⇧C. Everything said, by voice or typed, stays there, with the coordinator, its workers and your own sessions. Answer a question with Reply…, type @ to message one session, attach screenshots, and jump to a session’s terminal from its name."
+            body="Open the chat window from the round button above Pixie, or press ⌘⇧C while DeskPixie is in front. Everything said, by voice or typed, stays there, with the coordinator, its workers and your own sessions. Answer a question with Reply…, type @ to message one session, attach screenshots, and jump to a session’s terminal with the button by its name."
           >
-            <div className="feat-panel attach chatwin mac-ui">
+            <div className="feat-panel attach chatwin mac-ui" aria-hidden>
               <div className="chat-card mac-material is-on">
                 <div className="chat-who">
                   <span>api: add rate limiting</span>
@@ -499,11 +499,11 @@ export default function Home() {
                 <p className="chat-answer">Yes, ship it with 100 a minute.</p>
                 <div className="chat-input">
                   <PaperclipIcon />
-                  <span className="chat-field">@docs update the setup guide</span>
+                  <span className="chat-field">@api and add a test</span>
                   <SendIcon on />
                 </div>
               </div>
-              <p className="attach-note">⌘⇧C opens it. Messages go to the session you name.</p>
+              <p className="attach-note">Messages go to the session you name.</p>
             </div>
           </Feature>
 

@@ -1340,7 +1340,7 @@ kbd.wide {
   gap: 8px;
 }
 .reply-btn {
-  color: var(--accent, #7cc4ff);
+  color: #7cc4ff;
 }
 
 /* Canvas: a light page next to Pixie, in the canvas design system's colors. */
