@@ -1324,6 +1324,25 @@ kbd.wide {
   color: var(--secondary);
 }
 
+/* Chat window mock: two cards in the attach panel's night sky; stacks and shrinks with the panel. */
+.chatwin .chat-card {
+  align-self: center;
+  width: min(calc(260 * var(--u)), 100%);
+}
+.chatwin .chat-who span:first-child {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.chatwin .chat-who,
+.chatwin .chat-status {
+  gap: 8px;
+}
+.reply-btn {
+  color: var(--accent, #7cc4ff);
+}
+
 /* Canvas: a light page next to Pixie, in the canvas design system's colors. */
 .canvas {
   gap: 14px;
