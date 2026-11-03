@@ -437,7 +437,7 @@ export default function Home() {
           <Feature
             n={5}
             title="Reaches the sessions you already run"
-            body="Start Claude Code or Codex with pix in any terminal: WebStorm, iTerm, VS Code. The agent looks and works exactly as usual. The difference is that Pixie can now see that session, message it, interrupt it and pass on its questions, right next to its own workers. Say “show me the api session” and its tab comes to the front. Install pix from Settings ▸ Coordinator ▸ pix command."
+            body="Start Claude Code or Codex with pix in any terminal: WebStorm, iTerm, VS Code. The agent looks and works exactly as usual. The difference is that Pixie can now see that session, message it, interrupt it, swap what it’s doing for your note, and pass on its questions, right next to its own workers. When a session asks you something, answer by voice (“the second one”) or with Reply… in the chat window, and Pixie types it in for you. Menus and permission prompts work too, by voice or with a tap. Say “show me the api session” and its tab comes to the front. Install pix from Settings ▸ Coordinator ▸ pix command."
           >
             <div className="feat-panel term">
               <div className="term-win">
@@ -585,7 +585,7 @@ export default function Home() {
           <h2>Pick your pixie</h2>
           <p>
             Four hand-drawn characters, each with its own moods for listening, thinking, handing off
-            work and celebrating.
+            work and celebrating. Your pick shows up in the menu bar and the Dock, too.
           </p>
           <PixiePicker />
         </div>
