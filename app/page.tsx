@@ -339,7 +339,7 @@ export default function Home() {
           <Feature
             n={1}
             title="Talk to it, or type"
-            body="Press ⌃⌥Space or double-click Pixie and just talk, hands off the keyboard. Answers come back short and spoken, and Pixie does quick things itself: the time, the weather, a timer, a sum, some music. Your words and Pixie’s show as captions while you talk, and ‹ › steps back through the last few minutes of replies. In a meeting? Flip the toggle under Pixie to 💬 and type instead: the answer shows as text, without a sound."
+            body="Press ⌃⌥Space or double-click Pixie and just talk, hands off the keyboard. Answers come back short and spoken, and Pixie does quick things itself: the time, the weather, a timer, a sum, some music. Your words and Pixie’s show as captions while you talk, and ‹ › steps back through the last few minutes of replies. In a meeting? Flip the toggle under Pixie to 💬 and type instead: the answer shows as text, without a sound. The chat window (the round button above Pixie, or ⌘⇧C) keeps the whole conversation, voice and typed, with every session’s replies as cards you can answer right there."
           >
             <div className="feat-panel talk">
               <div className="keys" aria-label="Control, Option, Space">
@@ -437,7 +437,7 @@ export default function Home() {
           <Feature
             n={5}
             title="Reaches the sessions you already run"
-            body="Start Claude Code or Codex with pix in any terminal: WebStorm, iTerm, VS Code. The agent looks and works exactly as usual. The difference is that Pixie can now see that session, message it, interrupt it and pass on its questions, right next to its own workers. Say “show me the api session” and its tab comes to the front. Install pix from Settings ▸ Coordinator ▸ pix command."
+            body="Start Claude Code or Codex with pix in any terminal: WebStorm, iTerm, VS Code. The agent looks and works exactly as usual. The difference is that Pixie can now see that session, message it, interrupt it and pass on its questions, right next to its own workers. When one asks you to pick from a menu, just say the option, or answer it from the chat window; “stop that” stops its turn. Say “show me the api session” and its tab comes to the front. Install pix from Settings ▸ Coordinator ▸ pix command."
           >
             <div className="feat-panel term">
               <div className="term-win">
