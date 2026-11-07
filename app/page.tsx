@@ -429,7 +429,7 @@ export default function Home() {
             n={4}
             reverse
             title="Tells you when it’s done"
-            body="No more checking back on a session, or flipping through tabs to find the one you meant. When a long turn in one of your sessions ends, Pixie says what happened in one sentence. Each session names itself after its project and task, so you can say “tell the login-bug one to stop.” A button under Pixie’s words takes you straight to that session’s terminal tab."
+            body="No more checking back on a session, or flipping through tabs to find the one you meant. When a long turn in one of your sessions ends, Pixie says what happened in one sentence. Each session names itself after its project and task, so you can say “tell the login-bug one to stop.” A button under Pixie’s words takes you straight to that session’s terminal tab. When a session stops to ask you something, Pixie reads it out. Answer a multiple-choice question by saying the option, or type a reply with Reply… in the chat window. A question you’d rather not answer here can be dismissed; the session keeps waiting in its terminal."
           >
             <DoneDemo />
           </Feature>
@@ -437,7 +437,7 @@ export default function Home() {
           <Feature
             n={5}
             title="Reaches the sessions you already run"
-            body="Start Claude Code or Codex with pix in any terminal: WebStorm, iTerm, VS Code. The agent looks and works exactly as usual. The difference is that Pixie can now see that session, message it, interrupt it and pass on its questions, right next to its own workers. Say “show me the api session” and its tab comes to the front. Install pix from Settings ▸ Coordinator ▸ pix command."
+            body="Start Claude Code or Codex with pix in any terminal: WebStorm, iTerm, VS Code. The agent looks and works exactly as usual. The difference is that Pixie can now see that session, message it, interrupt it, send your words right away (stopping its current turn if it’s busy), and pass on its questions, right next to its own workers. Say “show me the api session” and its tab comes to the front. Install pix from Settings ▸ Coordinator ▸ pix command."
           >
             <div className="feat-panel term">
               <div className="term-win">
@@ -563,7 +563,7 @@ export default function Home() {
           <h2>Set up in one window</h2>
           <p>
             The first time you open DeskPixie, a welcome window walks you through it. Every choice
-            is the same setting you can change later.
+            is the same setting you can change later. Settings looks like System Settings and has search.
           </p>
           <ol className="setup-steps">
             <li>
@@ -585,7 +585,7 @@ export default function Home() {
           <h2>Pick your pixie</h2>
           <p>
             Four hand-drawn characters, each with its own moods for listening, thinking, handing off
-            work and celebrating.
+            work and celebrating. Your menu bar and Dock icons follow the one you pick.
           </p>
           <PixiePicker />
         </div>
