@@ -437,7 +437,7 @@ export default function Home() {
           <Feature
             n={5}
             title="Reaches the sessions you already run"
-            body="Start Claude Code or Codex with pix in any terminal: WebStorm, iTerm, VS Code. The agent looks and works exactly as usual. The difference is that Pixie can now see that session, message it, interrupt it and pass on its questions, right next to its own workers. Say “show me the api session” and its tab comes to the front. Install pix from Settings ▸ Coordinator ▸ pix command."
+            body="Start Claude Code or Codex with pix in any terminal: WebStorm, iTerm, VS Code. The agent looks and works exactly as usual. The difference is that Pixie can now see that session, message it, interrupt it and pass on its questions, right next to its own workers. When a session asks something, answer it from the chat window: pick an option or, where the menu allows, type your own words. Say “show me the api session” and its tab comes to the front. Install pix from Settings ▸ Coordinator ▸ pix command."
           >
             <div className="feat-panel term">
               <div className="term-win">
