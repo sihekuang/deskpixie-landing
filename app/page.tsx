@@ -361,7 +361,7 @@ export default function Home() {
             n={2}
             reverse
             title="Hands off the real work"
-            body="Coding, research and repo chores go to the coordinator: a Claude Code agent (or OpenAI Codex, if you prefer) working in the background in a Herdr session. It can start its own workers and split the job up, while Pixie stays free to chat. Results, questions and permission requests come back to you, and a worker that made something stays open until you’re done with it. Needs Herdr 0.7.5 or 0.9.x."
+            body="Coding, research and repo chores go to the coordinator: a Claude Code agent (or OpenAI Codex, if you prefer) working in the background in a Herdr or tmux session. It can start its own workers and split the job up, while Pixie stays free to chat. Results, questions and permission requests come back to you, and a worker that made something stays open until you’re done with it. Needs Herdr 0.7.5 or 0.9.x, or tmux 3.2 or newer."
           >
             <div className="feat-panel flow">
               <div className="flow-node">
@@ -437,7 +437,7 @@ export default function Home() {
           <Feature
             n={5}
             title="Reaches the sessions you already run"
-            body="Start Claude Code or Codex with pix in any terminal: WebStorm, iTerm, VS Code. The agent looks and works exactly as usual. The difference is that Pixie can now see that session, message it, interrupt it and pass on its questions, right next to its own workers. Say “show me the api session” and its tab comes to the front. Install pix from Settings ▸ Coordinator ▸ pix command."
+            body="Start Claude Code or Codex with pix in any terminal: WebStorm, iTerm, VS Code. The agent looks and works exactly as usual. The difference is that Pixie can now see that session, message it, interrupt it and pass on its questions, right next to its own workers. Busy session? Say “send it anyway” and Pixie stops its turn and puts your message in now. Say “show me the api session” and its tab comes to the front. Install pix from Settings ▸ Coordinator ▸ pix command."
           >
             <div className="feat-panel term">
               <div className="term-win">
@@ -476,6 +476,65 @@ export default function Home() {
           <Feature
             n={6}
             reverse
+            id="chat"
+            title="Keeps the whole conversation"
+            body="Open the chat window with the round button above Pixie, or ⌘⇧C while DeskPixie is in front. It keeps everything said, spoken or typed, with the coordinator, its workers and your own sessions. Answer a question right there: pick a menu option, allow or deny, reply in your own words, or dismiss it. Type @ to message one session, and its answer comes back as a card. Screenshots you send show as thumbnails, and the terminal button by a session’s name opens its terminal."
+          >
+            <div className="feat-panel chatwin">
+              <div className="cw-win">
+                <div className="term-bar">
+                  <i />
+                  <i />
+                  <i />
+                  <span>Chat</span>
+                </div>
+                <div className="cw-body">
+                  <div className="cw-card">
+                    <div className="cw-head">
+                      <span className="dot" /> <b>api</b>
+                      <span className="cw-term" aria-hidden>
+                        ⌨
+                      </span>
+                      · your session · working
+                    </div>
+                    <p className="cw-q">Run the migration on staging?</p>
+                    <div className="cw-opts">
+                      <span className="cw-btn primary">1. Yes</span>
+                      <span className="cw-btn">2. No, show me first</span>
+                    </div>
+                  </div>
+                  <div className="cw-you">
+                    <p>
+                      <b>@docs</b> use the new screenshots
+                    </p>
+                    <span className="cw-thumb">
+                      <i className="thumb" /> setup.png
+                    </span>
+                  </div>
+                  <div className="cw-card cw-reply">
+                    <div className="cw-head">
+                      <span className="dot dot-idle" /> <b>docs</b>
+                      <span className="cw-term" aria-hidden>
+                        ⌨
+                      </span>
+                      · your session
+                    </div>
+                    <p>Swapped in the new screenshots and rebuilt the setup guide.</p>
+                    <div className="cw-foot">
+                      <span>Reply…</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="cw-compose">
+                  <PaperclipIcon />
+                  <span>Message… type @ for a session</span>
+                </div>
+              </div>
+            </div>
+          </Feature>
+
+          <Feature
+            n={7}
             title="Shows, not just tells"
             body="Some answers are better seen. The coordinator can open a canvas page next to Pixie: a chart, an architecture diagram, a side-by-side comparison. Ask it to show you, and the page opens on your desktop."
           >
@@ -519,7 +578,8 @@ export default function Home() {
           </Feature>
 
           <Feature
-            n={7}
+            n={8}
+            reverse
             id="privacy"
             title="Keeps your keys on your computer"
             body="Your API keys live in the system Keychain and are never logged. The microphone is only on while a conversation is open. Agent work runs through your own Claude Code and Codex, and pix never edits your config files."
@@ -572,7 +632,7 @@ export default function Home() {
             </li>
             <li>
               <b>Set up each part</b>
-              <span>Your voice key and microphone, Herdr with Claude Code or Codex, and the pix command.</span>
+              <span>Your voice key and microphone, Herdr (or tmux) with Claude Code or Codex, and the pix command.</span>
             </li>
             <li>
               <b>Allow permissions once</b>
@@ -585,7 +645,7 @@ export default function Home() {
           <h2>Pick your pixie</h2>
           <p>
             Four hand-drawn characters, each with its own moods for listening, thinking, handing off
-            work and celebrating.
+            work and celebrating. The one you pick shows in your menu bar and Dock, too.
           </p>
           <PixiePicker />
         </div>
