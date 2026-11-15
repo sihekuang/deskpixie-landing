@@ -522,7 +522,7 @@ export default function Home() {
             n={7}
             id="privacy"
             title="Keeps your keys on your computer"
-            body="Your API keys live in the system Keychain and are never logged. The microphone is only on while a conversation is open. Agent work runs through your own Claude Code and Codex, and pix never edits your config files."
+            body="Your API keys live in the system Keychain and are never logged. The microphone is only on while a conversation is open. Turn on “Just say updates” and Pixie tells you when a job is done without turning the mic on, unless it has a question for you. Agent work runs through your own Claude Code and Codex, and pix never edits your config files."
           >
             <div className="feat-panel privacy">
               <p className="mic-title">Your mic, across a day</p>
