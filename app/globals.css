@@ -1585,15 +1585,6 @@ kbd.wide {
   font-weight: 600;
   color: var(--ink);
 }
-.cw-bar em {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-style: normal;
-  font-size: 11px;
-  color: var(--ink-muted);
-  white-space: nowrap;
-}
 .cw-need {
   display: flex;
   flex-wrap: wrap;
@@ -1687,12 +1678,6 @@ kbd.wide {
   background: #0a84ff;
   border-color: #0a84ff;
   color: #fff;
-}
-.cw-btns .cw-open {
-  margin-left: auto;
-  border: 0;
-  background: none;
-  color: #0a6fd6;
 }
 .cw-box {
   display: flex;
