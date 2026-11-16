@@ -361,7 +361,7 @@ export default function Home() {
             n={2}
             reverse
             title="Hands off the real work"
-            body="Coding, research and repo chores go to the coordinator: a Claude Code agent (or OpenAI Codex, if you prefer) working in the background in a Herdr session. It can start its own workers and split the job up, while Pixie stays free to chat. Results, questions and permission requests come back to you, and a worker that made something stays open until you’re done with it. Needs Herdr 0.7.5 or 0.9.x."
+            body="Coding, research and repo chores go to the coordinator: a Claude Code agent (or OpenAI Codex, if you prefer) working in the background in a Herdr or tmux session. It can start its own workers and split the job up, while Pixie stays free to chat. Results, questions and permission requests come back to you, and a worker that made something stays open until you’re done with it. Needs Herdr 0.7.5 or 0.9.x, or tmux 3.2 or newer."
           >
             <div className="feat-panel flow">
               <div className="flow-node">
@@ -429,7 +429,7 @@ export default function Home() {
             n={4}
             reverse
             title="Tells you when it’s done"
-            body="No more checking back on a session, or flipping through tabs to find the one you meant. When a long turn in one of your sessions ends, Pixie says what happened in one sentence. Each session names itself after its project and task, so you can say “tell the login-bug one to stop.” A button under Pixie’s words takes you straight to that session’s terminal tab."
+            body="No more checking back on a session, or flipping through tabs to find the one you meant. When a long turn in one of your sessions ends, Pixie says what happened in one sentence. Each session names itself after its project and task, so you can say “tell the login-bug one to stop.” A button under Pixie’s words takes you straight to that session’s terminal tab. Pixie speaks up even when you aren’t talking to it, and you choose whether it listens afterwards: always, only when the update asks you something, or never."
           >
             <DoneDemo />
           </Feature>
@@ -437,7 +437,7 @@ export default function Home() {
           <Feature
             n={5}
             title="Reaches the sessions you already run"
-            body="Start Claude Code or Codex with pix in any terminal: WebStorm, iTerm, VS Code. The agent looks and works exactly as usual. The difference is that Pixie can now see that session, message it, interrupt it and pass on its questions, right next to its own workers. Say “show me the api session” and its tab comes to the front. Install pix from Settings ▸ Coordinator ▸ pix command."
+            body="Start Claude Code or Codex with pix in any terminal: WebStorm, iTerm, VS Code. The agent looks and works exactly as usual. The difference is that Pixie can now see that session, message it, interrupt it and pass on its questions, right next to its own workers. Say “show me the api session” and its tab comes to the front. When a session asks a question or wants permission, just answer out loud, like “yes, the second one”, and Pixie picks it in the session’s own menu. Changed your mind about what you sent it? Say “stop that” and its turn stops. Install pix from Settings ▸ Coordinator ▸ pix command."
           >
             <div className="feat-panel term">
               <div className="term-win">
@@ -476,6 +476,69 @@ export default function Home() {
           <Feature
             n={6}
             reverse
+            id="chat"
+            title="Keep the whole conversation"
+            body="The chat window holds everything said, by voice or typed, with the coordinator, its workers and your own sessions, in one thread. Questions and permission requests wait there as cards until you answer, with what needs you pinned at the top. Reply to a session, type @ to message one, attach screenshots, and jump to its terminal from its name. Open it with ⌘⇧C or the round button above Pixie."
+          >
+            <div className="feat-panel chatwin">
+              <div className="cw-win">
+                <div className="term-bar cw-bar">
+                  <i />
+                  <i />
+                  <i />
+                  <span>Pixie</span>
+                  <em>
+                    <span className="dot" /> 2 working
+                  </em>
+                </div>
+                <div className="cw-need">
+                  <b>1 needs you</b>
+                  <span>api wants to run npm install</span>
+                </div>
+                <div className="cw-thread">
+                  <p className="cw-me">Fix the failing login test</p>
+                  <div className="cw-msg">
+                    <b>Pixie</b>
+                    <p>On it. I asked a worker to look at the login test.</p>
+                  </div>
+                  <div className="cw-card cw-perm">
+                    <span className="cw-who">
+                      <i className="cw-dot c1" /> api · your session · needs you
+                    </span>
+                    <p>Run npm install express-rate-limit?</p>
+                    <div className="cw-btns">
+                      <span className="on">Allow</span>
+                      <span>Deny</span>
+                      <span className="cw-open">Open ›</span>
+                    </div>
+                  </div>
+                  <div className="cw-card">
+                    <span className="cw-who">
+                      <i className="cw-dot c2" /> docs · Pixie’s agent · asks
+                    </span>
+                    <p>Which changelog format for 0.20?</p>
+                    <div className="cw-btns">
+                      <span>Keep a Changelog</span>
+                      <span>Plain</span>
+                      <span>Reply…</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="cw-box">
+                  <span className="cw-replying">
+                    <i className="cw-dot c2" /> Replying to docs <b aria-hidden>×</b>
+                  </span>
+                  <div className="cw-input">
+                    <span aria-hidden>+</span>
+                    <span className="cw-field">Message Pixie…</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Feature>
+
+          <Feature
+            n={7}
             title="Shows, not just tells"
             body="Some answers are better seen. The coordinator can open a canvas page next to Pixie: a chart, an architecture diagram, a side-by-side comparison. Ask it to show you, and the page opens on your desktop."
           >
@@ -519,7 +582,8 @@ export default function Home() {
           </Feature>
 
           <Feature
-            n={7}
+            n={8}
+            reverse
             id="privacy"
             title="Keeps your keys on your computer"
             body="Your API keys live in the system Keychain and are never logged. The microphone is only on while a conversation is open. Agent work runs through your own Claude Code and Codex, and pix never edits your config files."
@@ -572,7 +636,7 @@ export default function Home() {
             </li>
             <li>
               <b>Set up each part</b>
-              <span>Your voice key and microphone, Herdr with Claude Code or Codex, and the pix command.</span>
+              <span>Your voice key and microphone, Herdr or tmux with Claude Code or Codex, and the pix command.</span>
             </li>
             <li>
               <b>Allow permissions once</b>
