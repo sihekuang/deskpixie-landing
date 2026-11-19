@@ -429,7 +429,7 @@ export default function Home() {
             n={4}
             reverse
             title="Tells you when it’s done"
-            body="No more checking back on a session, or flipping through tabs to find the one you meant. When a long turn in one of your sessions ends, Pixie says what happened in one sentence. Each session names itself after its project and task, so you can say “tell the login-bug one to stop.” A button under Pixie’s words takes you straight to that session’s terminal tab. Pixie speaks up even when you aren’t talking to it, and you choose whether it listens afterwards: always, only when the update asks you something, or never."
+            body="No more checking back on a session, or flipping through tabs to find the one you meant. When a long turn in one of your sessions ends, Pixie says what happened in one sentence. Each session names itself after its project and task, so you can say “tell the login-bug one to stop.” A button under Pixie’s words takes you straight to that session’s terminal tab. Pixie speaks up even when you aren’t talking to it, and you choose whether it listens afterwards: always, only when the update asks you something, or never. An update it only reads out keeps your mic off."
           >
             <DoneDemo />
           </Feature>
@@ -582,7 +582,7 @@ export default function Home() {
             reverse
             id="privacy"
             title="Keeps your keys on your computer"
-            body="Your API keys live in the system Keychain and are never logged. The microphone is only on while a conversation is open. Agent work runs through your own Claude Code and Codex, and pix never edits your config files."
+            body="Your API keys live in the system Keychain and are never logged. The microphone is only on while Pixie is listening to you, never while it just reads you an update. Agent work runs through your own Claude Code and Codex, and pix never edits your config files."
           >
             <div className="feat-panel privacy">
               <p className="mic-title">Your mic, across a day</p>
@@ -645,7 +645,8 @@ export default function Home() {
           <h2>Pick your pixie</h2>
           <p>
             Four hand-drawn characters, each with its own moods for listening, thinking, handing off
-            work and celebrating.
+            work and celebrating. Your pick is also the menu bar and Dock icon, and it comes in six
+            sizes, from Tiny for small screens up to Huge.
           </p>
           <PixiePicker />
         </div>
