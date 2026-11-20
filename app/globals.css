@@ -1549,6 +1549,97 @@ kbd.wide {
   color: #8a8a86;
 }
 
+/* History: the menu of past pix sessions, and the one you picked resuming in a terminal. */
+.history {
+  gap: 0;
+}
+.history-menu {
+  width: 100%;
+  max-width: 340px;
+  padding: 8px;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.06),
+    0 14px 30px rgba(26, 24, 20, 0.12);
+  font-size: 13px;
+  position: relative;
+  z-index: 1;
+}
+.history-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 2px 8px 8px;
+  border-bottom: 1px solid #f0efea;
+  font-weight: 600;
+}
+.history-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  padding: 7px 8px;
+  border-radius: 8px;
+  font-size: 12px;
+}
+.history-row .dot {
+  flex: none;
+}
+.history-row.is-picked {
+  background: #2f6fe0;
+  color: #fff;
+}
+.history-row.is-picked .dot-idle {
+  background: rgba(255, 255, 255, 0.7);
+}
+.history-task {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: ui-monospace, "SF Mono", monospace;
+}
+.history-meta {
+  flex: none;
+  color: #8a8a86;
+  white-space: nowrap;
+}
+.history-row.is-picked .history-meta {
+  color: rgba(255, 255, 255, 0.82);
+}
+.history-foot {
+  margin-top: 4px;
+  padding: 8px 8px 2px;
+  border-top: 1px solid #f0efea;
+  font-size: 12px;
+  color: #8a8a86;
+}
+.history-term {
+  max-width: 380px;
+  margin: -14px 0 0 12%;
+}
+.t-nw {
+  white-space: nowrap;
+}
+.history-term pre {
+  padding-top: 24px;
+}
+@media (max-width: 720px) {
+  .history-term {
+    margin: -10px 0 0;
+  }
+  .history-meta {
+    font-size: 11px;
+  }
+}
+@media (max-width: 360px) {
+  .history-term pre {
+    font-size: 11px;
+  }
+}
+
 /* 5: privacy, drawn as a pixel "mic timeline" on the night sky. Taller than the other
    panels, so the card sizes to it instead of the shared aspect ratio. */
 .feat-card:has(.privacy) {
@@ -2401,6 +2492,21 @@ html[data-motion="off"] *::after {
   .make-rows {
     grid-auto-rows: 24px;
     font-size: 11px;
+  }
+}
+
+/* The narrowest phones: the sheet's padding gives way so it never runs past the screen. */
+@media (max-width: 340px) {
+  .make-sheet {
+    padding: 14px;
+    gap: 10px;
+  }
+  .make-sheet img {
+    width: 160px;
+    background-size: 20px 20px;
+  }
+  .make-rows {
+    grid-auto-rows: 20px;
   }
 }
 

@@ -94,6 +94,14 @@ const CANVAS_BARS: [string, number, number][] = [
   ["/pricing", 55, 30],
 ];
 
+// Labels as the app writes them: task · project · when. The ● one is running now.
+const HISTORY: [string, string, string, boolean][] = [
+  ["login bug", "deskpixie", "running", true],
+  ["add rate limiting", "api", "2h ago", false],
+  ["rewrite setup guide", "docs", "yesterday", false],
+  ["flaky upload test", "web", "3d ago", false],
+];
+
 const HOME_TILES = [
   ["KEY", "API keys, in Keychain, never logged"],
   ["SRC", "Agent sessions and source code"],
@@ -429,7 +437,7 @@ export default function Home() {
             n={4}
             reverse
             title="Tells you when it’s done"
-            body="No more checking back on a session, or flipping through tabs to find the one you meant. When a long turn in one of your sessions ends, Pixie says what happened in one sentence. Each session names itself after its project and task, so you can say “tell the login-bug one to stop.” A button under Pixie’s words takes you straight to that session’s terminal tab."
+            body="No more checking back on a session, or flipping through tabs to find the one you meant. When a long turn in one of your sessions ends, Pixie says what happened in one sentence. Each session names itself after its project and task, so you can say “tell the login-bug one to stop.” A button under Pixie’s words takes you straight to that session’s terminal tab. Rather keep the mic off? Pixie can just say the update, and listen only when a session asks you something."
           >
             <DoneDemo />
           </Feature>
@@ -476,6 +484,44 @@ export default function Home() {
           <Feature
             n={6}
             reverse
+            id="history"
+            title="Picks up where you left off"
+            body="Closed a session you weren’t done with? DeskPixie remembers your last 20 Claude Code and Codex sessions that ran through pix. Open History from the menu bar, Pixie’s right-click menu or Settings, and click one: it resumes in its project folder, in a new terminal tab, with Pixie connected again. One that’s still running just comes to the front."
+          >
+            <div className="feat-panel history">
+              <div className="history-menu" role="img" aria-label="The History menu: four past sessions, the first one running">
+                <div className="history-head">
+                  <Sprite pixie="bit" scale={1} /> History
+                </div>
+                {HISTORY.map(([task, project, when, running], i) => (
+                  <div key={task} className={`history-row${i === 1 ? " is-picked" : ""}`}>
+                    <span className={`dot${running ? "" : " dot-idle"}`} />
+                    <span className="history-task">{task}</span>
+                    <span className="history-meta">
+                      {project} · {when}
+                    </span>
+                  </div>
+                ))}
+                <div className="history-foot">Clear History</div>
+              </div>
+              <div className="term-win history-term">
+                <div className="term-bar">
+                  <i />
+                  <i />
+                  <i />
+                  <span>api: add rate limiting</span>
+                </div>
+                <pre>
+                  <span className="t-dim">~/code/api</span> <span className="t-g">$</span> <span className="t-nw">pix claude --resume …</span>
+                  {"\n"}
+                  <span className="t-dim">✻ Claude Code · picked up where you left off</span>
+                </pre>
+              </div>
+            </div>
+          </Feature>
+
+          <Feature
+            n={7}
             title="Shows, not just tells"
             body="Some answers are better seen. The coordinator can open a canvas page next to Pixie: a chart, an architecture diagram, a side-by-side comparison. Ask it to show you, and the page opens on your desktop."
           >
@@ -519,7 +565,8 @@ export default function Home() {
           </Feature>
 
           <Feature
-            n={7}
+            n={8}
+            reverse
             id="privacy"
             title="Keeps your keys on your computer"
             body="Your API keys live in the system Keychain and are never logged. The microphone is only on while a conversation is open. Agent work runs through your own Claude Code and Codex, and pix never edits your config files."
@@ -585,7 +632,8 @@ export default function Home() {
           <h2>Pick your pixie</h2>
           <p>
             Four hand-drawn characters, each with its own moods for listening, thinking, handing off
-            work and celebrating.
+            work and celebrating. Six sizes, from Tiny for a small screen to Huge, and the menu bar and
+            Dock icons follow the one you pick.
           </p>
           <PixiePicker />
         </div>
