@@ -99,7 +99,7 @@ const HISTORY: [string, string, string, boolean][] = [
   ["login bug", "deskpixie", "running", true],
   ["add rate limiting", "api", "2h ago", false],
   ["rewrite setup guide", "docs", "yesterday", false],
-  ["flaky upload test", "web", "3d ago", false],
+  ["flaky upload test", "web", "3 days ago", false],
 ];
 
 const HOME_TILES = [
@@ -437,7 +437,7 @@ export default function Home() {
             n={4}
             reverse
             title="Tells you when it’s done"
-            body="No more checking back on a session, or flipping through tabs to find the one you meant. When a long turn in one of your sessions ends, Pixie says what happened in one sentence. Each session names itself after its project and task, so you can say “tell the login-bug one to stop.” A button under Pixie’s words takes you straight to that session’s terminal tab. Rather keep the mic off? Pixie can just say the update, and listen only when a session asks you something."
+            body="No more checking back on a session, or flipping through tabs to find the one you meant. When a long turn in one of your sessions ends, Pixie says what happened in one sentence. Each session names itself after its project and task, so you can say “tell the login-bug one to stop.” A button under Pixie’s words takes you straight to that session’s terminal tab. Rather keep the mic off? Pixie can just say the update, and listen only when an update asks you something."
           >
             <DoneDemo />
           </Feature>
@@ -486,7 +486,7 @@ export default function Home() {
             reverse
             id="history"
             title="Picks up where you left off"
-            body="Closed a session you weren’t done with? DeskPixie remembers your last 20 Claude Code and Codex sessions that ran through pix. Open History from the menu bar, Pixie’s right-click menu or Settings, and click one: it resumes in its project folder, in a new terminal tab, with Pixie connected again. One that’s still running just comes to the front."
+            body="Closed a session you weren’t done with? DeskPixie remembers your last 20 Claude Code and Codex sessions that ran through pix. Open History from the menu bar, Pixie’s right-click menu or Settings, and click one: it resumes in its project folder, in a new Herdr tab in your terminal, with Pixie connected again. One that’s still running just comes to the front."
           >
             <div className="feat-panel history">
               <div className="history-menu" role="img" aria-label="The History menu: four past sessions, the first one running">
@@ -513,8 +513,6 @@ export default function Home() {
                 </div>
                 <pre>
                   <span className="t-dim">~/code/api</span> <span className="t-g">$</span> <span className="t-nw">pix claude --resume …</span>
-                  {"\n"}
-                  <span className="t-dim">✻ Claude Code · picked up where you left off</span>
                 </pre>
               </div>
             </div>

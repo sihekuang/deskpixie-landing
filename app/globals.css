@@ -1617,6 +1617,7 @@ kbd.wide {
   color: #8a8a86;
 }
 .history-term {
+  width: 88%;
   max-width: 380px;
   margin: -14px 0 0 12%;
 }
@@ -1628,6 +1629,7 @@ kbd.wide {
 }
 @media (max-width: 720px) {
   .history-term {
+    width: 100%;
     margin: -10px 0 0;
   }
   .history-meta {
