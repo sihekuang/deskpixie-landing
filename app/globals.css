@@ -1549,6 +1549,65 @@ kbd.wide {
   color: #8a8a86;
 }
 
+/* History: Tray ▸ History, drawn as the app's menu in dark mode. */
+.history {
+  gap: 14px;
+}
+.hist-menu {
+  width: 100%;
+  max-width: calc(300 * var(--u));
+  padding: calc(5 * var(--u));
+  border-radius: calc(10 * var(--u));
+  box-shadow: 0 14px 34px rgba(26, 24, 20, 0.22);
+  font-size: calc(13 * var(--u));
+}
+.hist-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: calc(4 * var(--u)) calc(9 * var(--u)) calc(6 * var(--u));
+  color: var(--secondary);
+  font-weight: 600;
+}
+.hist-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: calc(4 * var(--u)) calc(9 * var(--u));
+  border-radius: calc(5 * var(--u));
+  min-width: 0;
+}
+.hist-label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.hist-meta {
+  flex-shrink: 0;
+  color: var(--secondary);
+  font-size: 0.9em;
+}
+.hist-sep {
+  height: 1px;
+  margin: calc(5 * var(--u)) calc(9 * var(--u));
+  background: var(--sep);
+}
+.hist-clear {
+  color: var(--primary);
+}
+.hist-cmd {
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: #15192e;
+  color: #e6e8f2;
+  font-family: ui-monospace, "SF Mono", monospace;
+  font-size: 13px;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
 /* 5: privacy, drawn as a pixel "mic timeline" on the night sky. Taller than the other
    panels, so the card sizes to it instead of the shared aspect ratio. */
 .feat-card:has(.privacy) {

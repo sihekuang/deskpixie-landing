@@ -48,7 +48,7 @@ const COMPARE_ROWS: [string, string, string, string][] = [
   ["Talks back", "Yes, out loud, or as text in 💬 mode", "Yes, in its conversation modes", "No. It writes your words for you"],
   ["Coding agents", "Claude Code and Codex", "Codex", "Doesn’t run agents; types into their prompt box"],
   ["Hands off work", "To any session you name, Claude Code or Codex, or to a coordinator that starts its own workers", "Only to subagents its own session starts", "No"],
-  ["Sessions you start yourself", "Sees and steers them all at once, in any terminal, with pix", "No. Each session manages only itself and its subagents", "Not its job"],
+  ["Sessions you start yourself", "Sees and steers them all at once, in any terminal, with pix, and resumes past ones from History", "No. Each session manages only itself and its subagents", "Not its job"],
   ["When a session is done", "Says so in one sentence and takes you to its tab", "Agents report back in the conversation", "Not its job"],
   ["Runs on", "macOS 14+ on Apple silicon", "Codex CLI and the ChatGPT desktop app", "Mac, Windows, iPhone and Android"],
   ["Price", "Free and open source; your own OpenAI or Gemini key for voice", "Comes with your ChatGPT or Codex plan", "Free tier; Pro from $12 a month, billed yearly"],
@@ -92,6 +92,13 @@ const CANVAS_BARS: [string, number, number][] = [
   ["/", 92, 48],
   ["/docs", 70, 41],
   ["/pricing", 55, 30],
+];
+
+// History rows as Tray ▸ History draws them: description · folder · age, ● for one running now.
+const HISTORY_ROWS: [string, string, boolean][] = [
+  ["add rate limiting", "api · running", true],
+  ["rewrite setup guide", "docs · 2h ago", false],
+  ["fix token refresh", "auth · yesterday", false],
 ];
 
 const HOME_TILES = [
@@ -429,7 +436,7 @@ export default function Home() {
             n={4}
             reverse
             title="Tells you when it’s done"
-            body="No more checking back on a session, or flipping through tabs to find the one you meant. When a long turn in one of your sessions ends, Pixie says what happened in one sentence. Each session names itself after its project and task, so you can say “tell the login-bug one to stop.” A button under Pixie’s words takes you straight to that session’s terminal tab."
+            body="No more checking back on a session, or flipping through tabs to find the one you meant. When a long turn in one of your sessions ends, Pixie says what happened in one sentence. Each session names itself after its project and task, so you can say “tell the login-bug one to stop.” A button under Pixie’s words takes you straight to that session’s terminal tab. When a session asks you something, even a menu of choices, answer out loud or in the chat window (⌘⇧C), and Pixie can pick it for you. Rather keep the mic off? Pixie can say an update and listen only when it asks you something, or never."
           >
             <DoneDemo />
           </Feature>
@@ -437,7 +444,7 @@ export default function Home() {
           <Feature
             n={5}
             title="Reaches the sessions you already run"
-            body="Start Claude Code or Codex with pix in any terminal: WebStorm, iTerm, VS Code. The agent looks and works exactly as usual. The difference is that Pixie can now see that session, message it, interrupt it and pass on its questions, right next to its own workers. Say “show me the api session” and its tab comes to the front. Install pix from Settings ▸ Coordinator ▸ pix command."
+            body="Start Claude Code or Codex with pix in any terminal: WebStorm, iTerm, VS Code. The agent looks and works exactly as usual. The difference is that Pixie can now see that session, message it, interrupt it and pass on its questions, right next to its own workers. Say “show me the api session” and its tab comes to the front. Install pix from Settings ▸ Sessions ▸ pix command."
           >
             <div className="feat-panel term">
               <div className="term-win">
@@ -476,6 +483,35 @@ export default function Home() {
           <Feature
             n={6}
             reverse
+            title="Picks up where you left off"
+            body="DeskPixie remembers your last 20 Claude Code and Codex sessions that ran through pix. Open History in the menu bar, in Pixie’s right-click menu or in Settings ▸ Sessions, and click one: it resumes in a new Herdr tab, in the folder it ran in, and your terminal opens on it. One that’s still running just comes to the front. Resuming needs Herdr."
+          >
+            <div className="feat-panel history mac-ui">
+              <div className="hist-menu mac-material" role="img" aria-label="The History menu: one running session and two past ones">
+                <div className="hist-head">
+                  <Sprite pixie="bit" scale={1} /> History
+                </div>
+                {HISTORY_ROWS.map(([label, meta, running]) => (
+                  <div key={label} className="hist-row">
+                    <span className="hist-label">
+                      {running ? "● " : ""}
+                      {label}
+                    </span>
+                    <span className="hist-meta">{meta}</span>
+                  </div>
+                ))}
+                <div className="hist-sep" />
+                <div className="hist-row hist-clear">Clear History</div>
+              </div>
+              <p className="hist-cmd">
+                <span className="t-g">$</span> pix claude --resume …
+              </p>
+              <p className="term-note">Opens in a new tab, in the project folder it ran in.</p>
+            </div>
+          </Feature>
+
+          <Feature
+            n={7}
             title="Shows, not just tells"
             body="Some answers are better seen. The coordinator can open a canvas page next to Pixie: a chart, an architecture diagram, a side-by-side comparison. Ask it to show you, and the page opens on your desktop."
           >
@@ -519,7 +555,8 @@ export default function Home() {
           </Feature>
 
           <Feature
-            n={7}
+            n={8}
+            reverse
             id="privacy"
             title="Keeps your keys on your computer"
             body="Your API keys live in the system Keychain and are never logged. The microphone is only on while a conversation is open. Agent work runs through your own Claude Code and Codex, and pix never edits your config files."
@@ -585,7 +622,8 @@ export default function Home() {
           <h2>Pick your pixie</h2>
           <p>
             Four hand-drawn characters, each with its own moods for listening, thinking, handing off
-            work and celebrating.
+            work and celebrating. Sizes run from Tiny for a small laptop screen up to Huge, and the
+            pixie you pick becomes the menu bar and Dock icon too.
           </p>
           <PixiePicker />
         </div>
@@ -617,7 +655,7 @@ export default function Home() {
               </li>
               <li>
                 <b>Drop it in your pixies folder</b>
-                <span>Pixie ▸ Reload Pixies, then pick it in Settings. Zip the folder to share it.</span>
+                <span>Pixie ▸ Reload Pixies, then pick it in Settings. It becomes your menu bar icon too. Zip the folder to share it.</span>
               </li>
             </ol>
             <a href={PIXIE_GUIDE_URL} className="make-link">
